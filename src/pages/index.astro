@@ -1,14 +1,22 @@
 ---
-import Card from "../components/Card.astro";
-import Welcome from "../components/Welcome.astro";
-import Layout from "../layouts/Layout.astro";
-import { getPosts } from "../utils/sanity";
+import Card from "../components/Card.astro"
+import Welcome from "../components/Welcome.astro"
+import Shirt from "../components/Shirt.astro"
+import Layout from "../layouts/Layout.astro"
+import { getShirts } from "../utils/sanity"
 
-const posts = await getPosts();
+const shirts = await getShirts()
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Engster Rides">
   <section>
-    {posts.length ? posts.map((post) => <Card post={post} />) : <Welcome />}
+    <!-- {posts.length ? posts.map((post) => <Card post={post} />) : <Welcome />}  -->
+    {
+      shirts.length ? (
+        shirts.map((shirt) => <Shirt shirt={shirt} />)
+      ) : (
+        <Welcome />
+      )
+    }
   </section>
 </Layout>

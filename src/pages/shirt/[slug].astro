@@ -1,0 +1,160 @@
+---
+import type { InferGetStaticParamsType } from "astro"
+import { PortableText } from "astro-portabletext"
+import Layout from "../../layouts/Layout.astro"
+import { formatDate } from "../../utils"
+import { urlFor } from "../../utils/image"
+import { getShirt, getShirts } from "../../utils/sanity"
+
+export async function getStaticPaths() {
+  const shirts = await getShirts()
+  return shirts.map((shirt) => ({
+    params: { slug: shirt.slug.current },
+  }))
+}
+
+type Params = InferGetStaticParamsType<typeof getStaticPaths>
+const { slug } = Astro.params as Params
+
+const shirt = await getShirt(slug)
+---
+
+<Layout title={shirt.name}>
+  <section class="shirt">
+    {
+      shirt.images.length ? (
+        <img
+          class="post__cover"
+          src={urlFor(shirt.images[0]).url()}
+          alt="Cover image"
+          width="200"
+        />
+      ) : (
+        <div class="post__cover--none" />
+      )
+    }
+    <div class="post__container">
+      <h1 class="post__title">{shirt.name}</h1>
+      <p class="post__excerpt">{shirt.excerpt}</p>
+      <div class="post__content">
+        <PortableText value={shirt.description} />
+      </div>
+    </div>
+
+    <button
+      class="snipcart-add-item"
+      data-item-id={shirt.slug.current}
+      data-item-price={shirt.price}
+      data-item-description={shirt.description}
+      data-item-image={shirt.images.length ? urlFor(shirt.images[0]).url() : ""}
+      data-item-name={shirt.name}
+      data-item-custom1-name="Shirt size"
+      data-item-custom1-options="X-Small|Small|Medium|Large|X-Large"
+      data-item-quantity="1"
+    >
+      Add to cart
+    </button>
+  </section>
+</Layout>
+
+<style>
+  .post {
+    width: 100%;
+    margin: var(--space-1) 0 var(--space-4);
+
+    & .post__cover,
+    & .post__cover--none {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    & .post__cover--none {
+      background: var(--black);
+    }
+
+    & .post__container {
+      padding: 0 var(--space-3);
+    }
+
+    & .post__content {
+      font-family: var(--font-family-serif);
+      font-weight: 400;
+      font-size: var(--font-size-4);
+      line-height: var(--line-height-5);
+      letter-spacing: -0.02em;
+      margin-top: var(--space-6);
+
+      /* Targeting tags in PortableText */
+      & blockquote {
+        border-left: 5px solid var(--black);
+        padding-left: var(--space-3);
+        margin-left: var(--space-4);
+      }
+
+      & a {
+        color: var(--blue-600);
+        text-decoration: none;
+      }
+    }
+
+    & .post__title {
+      font-family: var(--font-family-sans);
+      font-size: var(--font-size-7);
+      line-height: var(--line-height-6);
+      margin: var(--space-4) 0;
+      font-weight: 800;
+    }
+
+    & .post__excerpt {
+      font-family: var(--font-family-serif);
+      font-size: var(--font-size-5);
+      line-height: var(--line-height-4);
+      margin-top: 0;
+      font-weight: 400;
+    }
+
+    & .post__date {
+      font-family: var(--font-family-sans);
+      font-weight: 600;
+      font-family: var(--font-family-sans);
+      font-size: var(--font-size-1);
+      line-height: var(--line-height-1);
+      margin-top: var(--space-4);
+    }
+  }
+
+  @media (min-width: 800px) {
+    .post {
+      & .post__cover,
+      & .post__cover--none {
+        width: 750px;
+        height: 380px;
+      }
+
+      & .post__title {
+        font-size: var(--font-size-10);
+        line-height: var(--line-height-10);
+        margin: var(--space-6) 0 0;
+        letter-spacing: -0.025em;
+      }
+
+      & .post__excerpt {
+        font-size: var(--font-size-5);
+        line-height: var(--line-height-5);
+        margin-top: var(--space-3);
+        margin-bottom: var(--space-3);
+      }
+
+      & .post__date {
+        font-size: var(--font-size-3);
+        line-height: var(--line-height-2);
+        margin-top: var(--space-0);
+      }
+
+      & .post__content {
+        margin-top: var(--space-7);
+      }
+    }
+  }
+</style>
