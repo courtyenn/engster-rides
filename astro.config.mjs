@@ -23,6 +23,8 @@ import compress from "astro-compress";
 
 import prefetch from "@astrojs/prefetch";
 import { astroImageTools } from "astro-imagetools";
+import tailwindIntegration from "@astrojs/tailwind";
+import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
 export default defineConfig({
@@ -41,6 +43,8 @@ export default defineConfig({
     vue({
       appEntrypoint: "/src/pages/_app",
     }),
+    sitemap(),
+    tailwindIntegration(),
     astroImageTools,
     prefetch(),
     compress({
