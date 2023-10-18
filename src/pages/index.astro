@@ -8,9 +8,8 @@ import { getShirts } from "../utils/sanity"
 const shirts = await getShirts()
 ---
 
-<Layout title="Engster Rides">
+<Layout title="Engster Rides" description="Shirts that make you go vroom vroom">
   <section>
-    <!-- {posts.length ? posts.map((post) => <Card post={post} />) : <Welcome />}  -->
     {
       shirts.length ? (
         shirts.map((shirt) => <Shirt shirt={shirt} />)

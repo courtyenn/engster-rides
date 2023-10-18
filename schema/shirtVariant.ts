@@ -1,3 +1,4 @@
+import React from "react"
 import { defineField, defineType } from "sanity"
 
 export default defineType({
@@ -5,6 +6,12 @@ export default defineType({
   title: "Shirt Variant",
   type: "document",
   fields: [
+    defineField({
+      name: "name",
+      title: "Name",
+      type: "string",
+      validation: (Rule) => Rule.required(),
+    }),
     defineField({
       name: "sku",
       title: "SKU",
@@ -30,21 +37,37 @@ export default defineType({
       },
     }),
     defineField({
+      name: "color",
+      title: "Color",
+      type: "reference",
+      to: [{ type: "shirtColor" }],
+    }),
+    defineField({
       name: "images",
       title: "Images",
       type: "array",
-      of: [{type: "image"}]
+      of: [{ type: "image", options: { hotspot: true } }],
     }),
   ],
   preview: {
     select: {
       title: "name",
-      description: "excerpt",
       images: "images",
+      color: "color",
     },
     prepare(selection) {
-      const { description, images } = selection
-      return { ...selection, subtitle: description, media: images[0] }
+      const { color, images } = selection
+      return {
+        ...selection,
+        media: images[0],
+        // media: React.createElement("div", {
+        //   style: {
+        //     backgroundColor: color.color.hex,
+        //     width: 20,
+        //     height: 20,
+        //   },
+        // }),
+      }
     },
   },
 })

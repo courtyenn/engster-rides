@@ -1,4 +1,4 @@
-import { defineField, defineType } from "sanity"
+import { defineField, defineType } from "sanity";
 
 export default defineType({
   name: "shirt",
@@ -11,6 +11,12 @@ export default defineType({
       description: "Call the shirt something memorable",
       type: "string",
       validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "inStock",
+      title: "In Stock",
+      type: "boolean",
+      initialValue: true,
     }),
     defineField({
       name: "slug",
@@ -59,11 +65,10 @@ export default defineType({
     select: {
       title: "name",
       description: "excerpt",
-      images: "images",
     },
     prepare(selection) {
-      const { description, images } = selection
-      return { ...selection, subtitle: description, media: images[0] }
+      const { description } = selection;
+      return { ...selection, subtitle: description };
     },
   },
-})
+});

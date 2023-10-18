@@ -1,10 +1,10 @@
 ---
 import type { InferGetStaticParamsType } from "astro"
 import { PortableText } from "astro-portabletext"
-import Layout from "../../layouts/Layout.astro"
-import { formatDate } from "../../utils"
 import { urlFor } from "../../utils/image"
-import { getShirt, getShirts } from "../../utils/sanity"
+import { getShirt, getShirts, type ShirtColor } from "../../utils/sanity"
+import type { ImageAsset } from "sanity"
+import ProductLayout from "../../layouts/ProductLayout.astro"
 
 export async function getStaticPaths() {
   const shirts = await getShirts()
@@ -17,11 +17,68 @@ type Params = InferGetStaticParamsType<typeof getStaticPaths>
 const { slug } = Astro.params as Params
 
 const shirt = await getShirt(slug)
+// console.log(shirt)
+const [colorMap, colors, sizes, images]: [
+  Record<string, boolean>,
+  ShirtColor[],
+  string[],
+  ImageAsset[],
+] = shirt.variants.reduce(
+  (acc, variant) => {
+    if (!acc[0][variant.color.colorName]) {
+      acc[0][variant.color.colorName] = true
+      acc[3].push(...variant.images.map((i) => i.asset))
+    } else if (!acc[0][variant.size]) {
+      acc[0][variant.size] = true
+      acc[3].push(...variant.images.map((i) => i.asset))
+    }
+    // acc[0] = [...acc[0], variant.images.map((i) => i.asset)].flat()
+
+    acc[1] = acc[1].some(
+      (color: ShirtColor) => color.colorName == variant.color.colorName
+    )
+      ? acc[1]
+      : [...acc[1], variant.color]
+
+    acc[2] = acc[2].some((size) => size == variant.size)
+      ? acc[2]
+      : [...acc[2], variant.size]
+    // acc[2].concat(acc[2].filter((size) => size != variant.size))
+    return acc
+  },
+  [{}, [], [], []]
+)
+// console.log(colorMap, colors, sizes, images.length)
 ---
 
-<Layout title={shirt.name}>
+<ProductLayout title={shirt.name} description={shirt.excerpt}>
   <section class="shirt">
-    {
+    <div class="shirt__container">
+      <div class="shirt__content">
+        <h1 class="shirt__title">
+          {shirt.name}
+        </h1>
+        <p class="shirt__excerpt">{shirt.excerpt}</p>
+        <div class="shirt__content">
+          <PortableText value={shirt.description} />
+          <h2>{shirt.variants?.length} - 2?</h2>
+          {
+            shirt.variants?.map((shirtV) => {
+              return shirtV.sku
+            })
+          }
+        </div>
+        {
+          images.map((image) => (
+            <img
+              class="shirt__cover"
+              src={urlFor(image).url()}
+              alt="Cover image"
+              width="200"
+            />
+          ))
+        }
+        <!-- {
       shirt.images.length ? (
         <img
           class="post__cover"
@@ -39,14 +96,14 @@ const shirt = await getShirt(slug)
       <div class="post__content">
         <PortableText value={shirt.description} />
       </div>
+    </div> -->
+      </div>
     </div>
-
     <button
       class="snipcart-add-item"
       data-item-id={shirt.slug.current}
       data-item-price={shirt.price}
       data-item-description={shirt.description}
-      data-item-image={shirt.images.length ? urlFor(shirt.images[0]).url() : ""}
       data-item-name={shirt.name}
       data-item-custom1-name="Shirt size"
       data-item-custom1-options="X-Small|Small|Medium|Large|X-Large"
@@ -55,7 +112,7 @@ const shirt = await getShirt(slug)
       Add to cart
     </button>
   </section>
-</Layout>
+</ProductLayout>
 
 <style>
   .post {

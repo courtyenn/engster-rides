@@ -1,3 +1,4 @@
+import React from "react"
 import { defineField, defineType } from "sanity"
 
 export default defineType({
@@ -17,15 +18,25 @@ export default defineType({
       type: "color",
       options: {
         disableAlpha: true,
-      }
+      },
     }),
   ],
   preview: {
     select: {
       title: "colorName",
+      color: "color",
     },
     prepare(selection) {
-      return { ...selection}
+      return {
+        ...selection,
+        media: React.createElement("div", {
+          style: {
+            backgroundColor: selection.color.hex,
+            width: 20,
+            height: 20,
+          },
+        }),
+      }
     },
   },
 })

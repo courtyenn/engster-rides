@@ -1,8 +1,8 @@
-<script transition:persist>
+<script is:inline>
+// document.addEventListener("astro:page-load", () => {
 window.SnipcartSettings = {
   publicApiKey:
     "YjgwYWU1ZTEtMWMyNi00NTlmLWI5Y2ItYTdjMGZkZDlhODg3NjM4MzMwODY0ODU5NzQ0OTEx",
-  loadStrategy: "on-user-interaction",
   modalStyle: "side",
 }
   ; (() => {
@@ -48,13 +48,12 @@ window.SnipcartSettings = {
         n = document.querySelector(
           `link[href^="${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}"][href$="snipcart.css"]`
         )
-      // e ||
-      //   ((e = document.createElement("div")),
-      //     (e.id = "snipcart"),
-      //     e.setAttribute("hidden", "true"),
-      //     e.setAttribute("transition:persist", "true"),
-      //     document.body.appendChild(e)),
-      v(e),
+      e ||
+        ((e = document.createElement("div")),
+          (e.id = "snipcart"),
+          e.setAttribute("hidden", "true"),
+          document.body.appendChild(e)),
+        v(e),
         i ||
         ((i = document.createElement("script")),
           (i.src = `${window.SnipcartSettings.protocol}://${window.SnipcartSettings.domain}/themes/v${window.SnipcartSettings.version}/default/snipcart.js`),
@@ -82,4 +81,5 @@ window.SnipcartSettings = {
           (t.dataset.templatesUrl = window.SnipcartSettings.templatesUrl))
     }
   })()
+// })
 </script>
