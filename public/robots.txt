@@ -1,0 +1,4 @@
+ser-agent: *
+Allow: /
+
+Sitemap: https://engster-rides.com/sitemap-index.xml
