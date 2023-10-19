@@ -44,6 +44,7 @@ export async function getShirt(slug: string): Promise<Shirt> {
       description,
       price,
       variants[]-> {
+        name,
         sku,
         size,
         fit,
@@ -64,6 +65,10 @@ export interface ShirtColor {
     hex: string;
   };
 }
+
+interface DumbImageAssetWrapper {
+  asset: ImageAsset;
+}
 export interface ShirtVariant {
   _type: "shirtVariant";
   _createdAt: string;
@@ -72,7 +77,7 @@ export interface ShirtVariant {
   size: string;
   fit: string;
   color: ShirtColor;
-  images: ImageAsset[];
+  images: DumbImageAssetWrapper[];
 }
 export interface Shirt {
   _type: "shirt";

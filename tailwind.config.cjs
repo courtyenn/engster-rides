@@ -16,8 +16,8 @@ module.exports = {
         info: "rgb(var(--color-info) / <alpha-value>)",
       },
       fontFamily: {
-        sans: ["Helvetica", "Verdana", "sans-serif"],
-        body: ["Helvetica", "Verdana", "sans-serif"],
+        sans: ["Inter", "Helvetica", "Verdana", "sans-serif"],
+        body: ["Inter", "Helvetica", "Verdana", "sans-serif"],
       },
       boxShadow: {
         inset: " inset 2px 2px 40px -20px rgba(0, 0, 0, 0.3)",

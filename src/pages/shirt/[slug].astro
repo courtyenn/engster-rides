@@ -5,6 +5,7 @@ import { urlFor } from "../../utils/image"
 import { getShirt, getShirts, type ShirtColor } from "../../utils/sanity"
 import type { ImageAsset } from "sanity"
 import ProductLayout from "../../layouts/ProductLayout.astro"
+import ProductSelection from "../../components/shop/ProductSelection.vue"
 
 export async function getStaticPaths() {
   const shirts = await getShirts()
@@ -59,6 +60,7 @@ const [colorMap, colors, sizes, images]: [
           {shirt.name}
         </h1>
         <p class="shirt__excerpt">{shirt.excerpt}</p>
+        <ProductSelection product={shirt} client:load />
         <div class="shirt__content">
           <PortableText value={shirt.description} />
           <h2>{shirt.variants?.length} - 2?</h2>
@@ -106,7 +108,7 @@ const [colorMap, colors, sizes, images]: [
       data-item-description={shirt.description}
       data-item-name={shirt.name}
       data-item-custom1-name="Shirt size"
-      data-item-custom1-options="X-Small|Small|Medium|Large|X-Large"
+      data-item-custom1-options={shirt.variants.map((v) => v.size).join("|")}
       data-item-quantity="1"
     >
       Add to cart

@@ -8,5 +8,11 @@ module.exports = {
         parser: "astro",
       },
     },
+    {
+      files: "*.vue",
+      options: {
+        singleAttributePerLine: true,
+      },
+    },
   ],
-}
+};

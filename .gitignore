@@ -1,6 +1,10 @@
 # build output
 dist/
 
+# the goats got in to the shop
+src/components/shop/GoatComponentComposition.vue
+src/components/shop/GoatComponentOptions.vue
+
 # generated types
 .astro/
 .vercel
