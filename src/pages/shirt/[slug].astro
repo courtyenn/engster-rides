@@ -6,6 +6,7 @@ import { getShirt, getShirts, type ShirtColor } from "../../utils/sanity"
 import type { ImageAsset } from "sanity"
 import ProductLayout from "../../layouts/ProductLayout.astro"
 import ProductSelection from "../../components/shop/ProductSelection.vue"
+import { Picture } from "astro-imagetools/components"
 
 export async function getStaticPaths() {
   const shirts = await getShirts()
@@ -72,12 +73,15 @@ const [colorMap, colors, sizes, images]: [
         </div>
         {
           images.map((image) => (
-            <img
-              class="shirt__cover"
-              src={urlFor(image).url()}
-              alt="Cover image"
-              width="200"
-            />
+          <div class="transition-transform duration-500 group-hover:-translate-y-1 group-hover:scale-105">
+          <Picture
+            src={urlFor(image).url()}
+            alt="A cool shirt"
+            width={170}
+            height={170}
+            layout="fixed"
+          />
+          </div>
           ))
         }
         <!-- {

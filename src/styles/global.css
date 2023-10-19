@@ -1,16 +1,18 @@
 @tailwind base;
+@tailwind utilities;
 
 @layer base {
   :root {
     --color-primary: 75 38 143; /* 135 94 212 */
     --color-secondary: 107 154 199;
-    --color-accent: 119 112 150;
+    --color-accent: 204 175 90;
     --color-warning: 202 121 45;
     --color-danger: 180 25 14;
     --color-success: 77 137 101;
     --color-dark: 25 28 38;
     --color-light: 243 241 239;
     --color-info: 25 28 38;
+    --color-bg: 79 79 79;
 
     --spacing: 1rem;
     --w-xl: 75rem;
@@ -24,13 +26,14 @@
     :root {
       --color-primary: 135 94 212;
       --color-secondary: 107 154 199;
-      --color-accent: 119 112 150;
+      --color-accent: 204 175 90;
       --color-warning: 202 121 45;
       --color-danger: 180 25 14;
       --color-success: 77 137 101;
       --color-dark: 25 28 38;
       --color-light: 243 241 239;
       --color-info: 25 28 38;
+      --color-bg: 79 79 79;
     }
   }
 }

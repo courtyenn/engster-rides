@@ -66,7 +66,7 @@ export interface ShirtColor {
   };
 }
 
-interface DumbImageAssetWrapper {
+export interface DumbImageAssetWrapper {
   asset: ImageAsset;
 }
 export interface ShirtVariant {
