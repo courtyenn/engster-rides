@@ -33,6 +33,7 @@ module.exports = {
       fontFamily: {
         sans: ["Inter", "Helvetica", "Verdana", "sans-serif"],
         body: ["Inter", "Helvetica", "Verdana", "sans-serif"],
+        accent: ["Poppins", "Helvetica", "Verdana", "sans-serif"],
       },
       boxShadow: {
         inset: " inset 2px 2px 40px -20px rgba(0, 0, 0, 0.3)",
@@ -40,6 +41,9 @@ module.exports = {
       },
       screens: {
         xs: "500px",
+      },
+      backgroundImage: {
+        engstarides: "url('/engsta_logo_full@small.png')",
       },
     },
   },

@@ -1,24 +1,24 @@
 ---
-import type { InferGetStaticParamsType } from "astro"
-import { PortableText } from "astro-portabletext"
-import { urlFor } from "../../utils/image"
-import { getShirt, getShirts, type ShirtColor } from "../../utils/sanity"
-import type { ImageAsset } from "sanity"
-import ProductLayout from "../../layouts/ProductLayout.astro"
-import ProductSelection from "../../components/shop/ProductSelection.vue"
-import { Picture } from "astro-imagetools/components"
+import type { InferGetStaticParamsType } from "astro";
+import { PortableText } from "astro-portabletext";
+import { urlFor } from "../../utils/image";
+import { getShirt, getShirts, type ShirtColor } from "../../utils/sanity";
+import type { ImageAsset } from "sanity";
+import ProductLayout from "../../layouts/ProductLayout.astro";
+import ProductSelection from "../../components/shop/ProductSelection.vue";
+import { Picture } from "astro-imagetools/components";
 
 export async function getStaticPaths() {
-  const shirts = await getShirts()
+  const shirts = await getShirts();
   return shirts.map((shirt) => ({
     params: { slug: shirt.slug.current },
-  }))
+  }));
 }
 
-type Params = InferGetStaticParamsType<typeof getStaticPaths>
-const { slug } = Astro.params as Params
+type Params = InferGetStaticParamsType<typeof getStaticPaths>;
+const { slug } = Astro.params as Params;
 
-const shirt = await getShirt(slug)
+const shirt = await getShirt(slug);
 // console.log(shirt)
 const [colorMap, colors, sizes, images]: [
   Record<string, boolean>,
@@ -28,51 +28,60 @@ const [colorMap, colors, sizes, images]: [
 ] = shirt.variants.reduce(
   (acc, variant) => {
     if (!acc[0][variant.color.colorName]) {
-      acc[0][variant.color.colorName] = true
-      acc[3].push(...variant.images.map((i) => i.asset))
+      acc[0][variant.color.colorName] = true;
+      acc[3].push(...variant.images.map((i) => i.asset));
     } else if (!acc[0][variant.size]) {
-      acc[0][variant.size] = true
-      acc[3].push(...variant.images.map((i) => i.asset))
+      acc[0][variant.size] = true;
+      acc[3].push(...variant.images.map((i) => i.asset));
     }
     // acc[0] = [...acc[0], variant.images.map((i) => i.asset)].flat()
 
     acc[1] = acc[1].some(
-      (color: ShirtColor) => color.colorName == variant.color.colorName
+      (color: ShirtColor) => color.colorName == variant.color.colorName,
     )
       ? acc[1]
-      : [...acc[1], variant.color]
+      : [...acc[1], variant.color];
 
     acc[2] = acc[2].some((size) => size == variant.size)
       ? acc[2]
-      : [...acc[2], variant.size]
+      : [...acc[2], variant.size];
     // acc[2].concat(acc[2].filter((size) => size != variant.size))
-    return acc
+    return acc;
   },
-  [{}, [], [], []]
-)
+  [{}, [], [], []],
+);
 // console.log(colorMap, colors, sizes, images.length)
 ---
 
 <ProductLayout title={shirt.name} description={shirt.excerpt}>
-  <section class="shirt">
-    <div class="shirt__container">
-      <div class="shirt__content">
-        <h1 class="shirt__title">
-          {shirt.name}
-        </h1>
-        <p class="shirt__excerpt">{shirt.excerpt}</p>
-        <ProductSelection product={shirt} client:load />
-        <div class="shirt__content">
-          <PortableText value={shirt.description} />
-          {
-            shirt.variants?.map((shirtV) => {
-              return shirtV.sku
-            })
-          }
-        </div>
-        {
-          images.map((image) => (
-          <div class="transition-transform duration-500 group-hover:-translate-y-1 group-hover:scale-105">
+  <section class="container mt-5 grid sm:grid-cols-2">
+    <h1 class="font-accent text-4xl sm:col-start-2">
+      {shirt.name}
+    </h1>
+    <ProductSelection product={shirt} client:load />
+    <div class="sm:col-start-2">
+      <PortableText value={shirt.description} />
+      {
+        shirt.variants?.map((shirtV) => {
+          return shirtV.sku;
+        })
+      }
+      <button
+        class="snipcart-add-item rounded-full bg-accent px-4 py-2 font-bold text-white hover:opacity-80"
+        data-item-id={shirt.slug.current}
+        data-item-price={shirt.price}
+        data-item-description={shirt.description}
+        data-item-name={shirt.name}
+        data-item-custom1-name="Shirt size"
+        data-item-custom1-options={shirt.variants.map((v) => v.size).join("|")}
+        data-item-quantity="1"
+      >
+        Add to cart
+      </button>
+    </div>
+    <!-- {
+      images.map((image) => (
+        <div class="transition-transform duration-500 group-hover:-translate-y-1 group-hover:scale-105">
           <Picture
             src={urlFor(image).url()}
             alt="A cool shirt"
@@ -80,143 +89,8 @@ const [colorMap, colors, sizes, images]: [
             height={170}
             layout="fixed"
           />
-          </div>
-          ))
-        }
-        <!-- {
-      shirt.images.length ? (
-        <img
-          class="post__cover"
-          src={urlFor(shirt.images[0]).url()}
-          alt="Cover image"
-          width="200"
-        />
-      ) : (
-        <div class="post__cover--none" />
-      )
-    }
-    <div class="post__container">
-      <h1 class="post__title">{shirt.name}</h1>
-      <p class="post__excerpt">{shirt.excerpt}</p>
-      <div class="post__content">
-        <PortableText value={shirt.description} />
-      </div>
-    </div> -->
-      </div>
-    </div>
-    <button
-      class="snipcart-add-item"
-      data-item-id={shirt.slug.current}
-      data-item-price={shirt.price}
-      data-item-description={shirt.description}
-      data-item-name={shirt.name}
-      data-item-custom1-name="Shirt size"
-      data-item-custom1-options={shirt.variants.map((v) => v.size).join("|")}
-      data-item-quantity="1"
-    >
-      Add to cart
-    </button>
+        </div>
+      ))
+    } -->
   </section>
 </ProductLayout>
-
-<style>
-  .post {
-    width: 100%;
-    margin: var(--space-1) 0 var(--space-4);
-
-    & .post__cover,
-    & .post__cover--none {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    & .post__cover--none {
-      background: var(--black);
-    }
-
-    & .post__container {
-      padding: 0 var(--space-3);
-    }
-
-    & .post__content {
-      font-family: var(--font-family-serif);
-      font-weight: 400;
-      font-size: var(--font-size-4);
-      line-height: var(--line-height-5);
-      letter-spacing: -0.02em;
-      margin-top: var(--space-6);
-
-      /* Targeting tags in PortableText */
-      & blockquote {
-        border-left: 5px solid var(--black);
-        padding-left: var(--space-3);
-        margin-left: var(--space-4);
-      }
-
-      & a {
-        color: var(--blue-600);
-        text-decoration: none;
-      }
-    }
-
-    & .post__title {
-      font-family: var(--font-family-sans);
-      font-size: var(--font-size-7);
-      line-height: var(--line-height-6);
-      margin: var(--space-4) 0;
-      font-weight: 800;
-    }
-
-    & .post__excerpt {
-      font-family: var(--font-family-serif);
-      font-size: var(--font-size-5);
-      line-height: var(--line-height-4);
-      margin-top: 0;
-      font-weight: 400;
-    }
-
-    & .post__date {
-      font-family: var(--font-family-sans);
-      font-weight: 600;
-      font-family: var(--font-family-sans);
-      font-size: var(--font-size-1);
-      line-height: var(--line-height-1);
-      margin-top: var(--space-4);
-    }
-  }
-
-  @media (min-width: 800px) {
-    .post {
-      & .post__cover,
-      & .post__cover--none {
-        width: 750px;
-        height: 380px;
-      }
-
-      & .post__title {
-        font-size: var(--font-size-10);
-        line-height: var(--line-height-10);
-        margin: var(--space-6) 0 0;
-        letter-spacing: -0.025em;
-      }
-
-      & .post__excerpt {
-        font-size: var(--font-size-5);
-        line-height: var(--line-height-5);
-        margin-top: var(--space-3);
-        margin-bottom: var(--space-3);
-      }
-
-      & .post__date {
-        font-size: var(--font-size-3);
-        line-height: var(--line-height-2);
-        margin-top: var(--space-0);
-      }
-
-      & .post__content {
-        margin-top: var(--space-7);
-      }
-    }
-  }
-</style>

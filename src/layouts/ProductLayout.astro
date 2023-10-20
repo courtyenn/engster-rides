@@ -21,7 +21,7 @@ const { title, description } = Astro.props;
     <CommonHead title={title} description={description} />
   </head>
   <body>
-    <div class="product__layout" transition:animate="fade">
+    <div class="product__layout font-sans" transition:animate="fade">
       <Header />
       <main class="">
         <slot />
@@ -37,7 +37,7 @@ const { title, description } = Astro.props;
         grid-template-columns: 1fr;
         min-height: 100vh;
 
-        @media screen and (min-width: 768px) {
+        @media screen and (min-width: 568px) {
           grid-template-rows: 100px 1fr 100px;
           grid-template-columns: 1fr;
         }
