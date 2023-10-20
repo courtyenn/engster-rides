@@ -16,11 +16,11 @@ const props = defineProps<{
   <div class="color_button_group">
     <span v-for="option in props.options">
       <input
-        class="color_button border-2 border-accent checked:border-8 checked:border-accent"
+        class="color_button"
         :key="option.value"
         :style="{ backgroundColor: option.color }"
         @click="props.onSelect(option)"
-        :checked="option.value === props.selected"
+        :aria-checked="option.value === props.selected"
       />
       <label class="sr-only">{{ option.label }}</label>
     </span>

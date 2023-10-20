@@ -1,14 +1,14 @@
 ---
-import Card from "../components/Card.astro"
-import Welcome from "../components/Welcome.astro"
-import Shirt from "../components/Shirt.astro"
-import Layout from "../layouts/Layout.astro"
-import { getShirts } from "../utils/sanity"
+import Card from "../components/Card.astro";
+import Welcome from "../components/Welcome.astro";
+import Shirt from "../components/Shirt.astro";
+import Layout from "../layouts/Layout.astro";
+import { getShirts } from "../utils/sanity";
 
-const shirts = await getShirts()
+const shirts = await getShirts();
 ---
 
-<Layout title="Engster Rides" description="Shirts that make you go vroom vroom">
+<Layout title="Engsta Rides" description="Shirts that make you go vroom vroom">
   <section>
     {
       shirts.length ? (

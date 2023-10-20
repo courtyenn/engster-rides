@@ -24,8 +24,8 @@ import { schemaTypes } from "./schema";
 import { colorInput } from "@sanity/color-input";
 
 export default defineConfig({
-  name: "engster-rides",
-  title: "Engster Rides",
+  name: "engsta-rides",
+  title: "Engsta Rides",
   projectId,
   dataset,
   plugins: [deskTool(), visionTool(), colorInput()],

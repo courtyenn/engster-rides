@@ -31,7 +31,12 @@ export default defineConfig({
   // Hybrid+adapter is required to support embedded Sanity Studio
   output: "hybrid",
   adapter: vercel(),
-  site: "https://engster-rides.com",
+  site: "https://engstarides.com",
+  vite: {
+    ssr: {
+      noExternal: ["oh-vue-icons"],
+    },
+  },
   integrations: [
     sanity({
       projectId,

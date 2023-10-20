@@ -4,6 +4,16 @@ module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
     extend: {
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: "1rem",
+          sm: "2rem",
+          lg: "4rem",
+          xl: "5rem",
+          "2xl": "6rem",
+        },
+      },
       colors: {
         primary: "rgb(var(--color-primary) / <alpha-value>)",
         secondary: "rgb(var(--color-secondary) / <alpha-value>)",
@@ -14,6 +24,11 @@ module.exports = {
         light: "rgb(var(--color-light) / <alpha-value>)",
         dark: "rgb(var(--color-dark) / <alpha-value>)",
         info: "rgb(var(--color-info) / <alpha-value>)",
+
+        // Dark sections
+        bg1: "rgb(var(--color-bg1) / <alpha-value>)",
+        text1: "rgb(var(--color-text1) / <alpha-value>)",
+        link1: "rgb(var(--color-link1) / <alpha-value>)",
       },
       fontFamily: {
         sans: ["Inter", "Helvetica", "Verdana", "sans-serif"],

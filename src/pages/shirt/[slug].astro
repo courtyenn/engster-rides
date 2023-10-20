@@ -64,7 +64,6 @@ const [colorMap, colors, sizes, images]: [
         <ProductSelection product={shirt} client:load />
         <div class="shirt__content">
           <PortableText value={shirt.description} />
-          <h2>{shirt.variants?.length} - 2?</h2>
           {
             shirt.variants?.map((shirtV) => {
               return shirtV.sku

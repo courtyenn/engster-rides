@@ -1,4 +1,4 @@
 ser-agent: *
 Allow: /
 
-Sitemap: https://engster-rides.com/sitemap-index.xml
+Sitemap: https://engstarides.com/sitemap-index.xml

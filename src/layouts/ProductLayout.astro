@@ -1,18 +1,18 @@
 ---
 // https://docs.astro.build/en/guides/view-transitions/
 // import { ViewTransitions } from "astro:transitions"
-import SnipCart from "../components/SnipCart.astro"
-import Footer from "../components/Footer.astro"
-import Header from "../components/Header.astro"
-import SnipCartDiv from "../components/SnipCartDiv.astro"
-import CommonHead from "../components/CommonHead.astro"
+import SnipCart from "../components/SnipCart.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import SnipCartDiv from "../components/SnipCartDiv.astro";
+import CommonHead from "../components/CommonHead.astro";
 
 interface Props {
-  title: string
-  description: string
+  title: string;
+  description: string;
 }
 
-const { title, description } = Astro.props
+const { title, description } = Astro.props;
 ---
 
 <!doctype html>
@@ -21,14 +21,27 @@ const { title, description } = Astro.props
     <CommonHead title={title} description={description} />
   </head>
   <body>
-    <div class="container" transition:animate="fade">
+    <div class="product__layout" transition:animate="fade">
       <Header />
-      <main>
+      <main class="">
         <slot />
       </main>
       <Footer />
     </div>
     <SnipCartDiv />
     <SnipCart />
+    <style>
+      .product__layout {
+        display: grid;
+        grid-template-rows: 1fr;
+        grid-template-columns: 1fr;
+        min-height: 100vh;
+
+        @media screen and (min-width: 768px) {
+          grid-template-rows: 100px 1fr 100px;
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
   </body>
 </html>

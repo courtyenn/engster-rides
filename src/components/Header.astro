@@ -1,5 +1,47 @@
-<header class="header">
-  <a class="header__title" href="/">Engster Rides</a>
-  <button class="snipcart-checkout">Click here to checkout</button>
-  <span class="snipcart-items-count"></span>
+---
+import Icon from "./common/Icon.vue";
+import { Picture } from "astro-imagetools/components";
+---
+
+<header class="nav bg-bg1 text-text1 sticky top-0 z-50 flex justify-around">
+  <nav class="container flex flex-nowrap items-center justify-between gap-6">
+    <a class="header__title" href="/">
+      <Picture src="/engsta_logo.png?h=80" alt="Engsta Rides Logo" />
+    </a>
+
+    <div class="flex basis-7/12 items-center justify-end gap-5">
+      <a href="/about" class="nav__button">About</a>
+      <a href="/contact" class="nav__button">Contact</a>
+      <a href="https://www.tiktok.com/@mmengsta" class="nav__button">
+        <Icon
+          name="co-tiktok"
+          scale="1.2"
+          label="Engsta Rides Official Tiktok"
+        />
+      </a>
+      <a href="https://www.instagram.com/engsta/" class="nav__button">
+        <Icon
+          name="pr-instagram"
+          scale="1.5"
+          label="Engsta Rides Official Instagram Page"
+        />
+      </a>
+      <button
+        class="snipcart-checkout nav__button flex items-center justify-center align-middle"
+      >
+        <Icon name="pr-shopping-cart" scale="1.5" label="Shopping cart" />
+        <span class="sr-only">Shopping cart</span>
+        <span class="snipcart-items-count"></span>
+      </button>
+    </div>
+  </nav>
 </header>
+<style>
+  .nav__button {
+    transition: all 0.2s ease-in;
+    &:hover {
+      transform: translateY(-0.2rem);
+      opacity: 0.5;
+    }
+  }
+</style>
