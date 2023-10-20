@@ -10,7 +10,7 @@ const props = defineProps<{
 <template>
   <Carousel
     :items-to-show="1"
-    class="col-start-1"
+    class="col-start-1 row-span-full row-start-1"
   >
     <template #addons>
       <Navigation />

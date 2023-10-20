@@ -13,7 +13,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div class="color_button_group sm:col-start-2">
+  <div class="color_button_group">
     <span v-for="option in props.options">
       <input
         class="color_button"
