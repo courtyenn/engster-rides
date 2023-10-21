@@ -22,7 +22,9 @@ const shirt = await getShirt(slug);
 ---
 
 <ProductLayout title={shirt.name} description={shirt.excerpt}>
-  <section class="container mt-5 grid grid-cols-1 sm:grid-cols-2">
+  <section
+    class="container box-border grid h-full grid-cols-1 gap-4 pb-5 pt-5 sm:grid-cols-2"
+  >
     <ProductSelection product={shirt} client:load />
   </section>
 </ProductLayout>

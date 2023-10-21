@@ -1,5 +1,5 @@
-import React from "react"
-import { defineField, defineType } from "sanity"
+import React from "react";
+import { defineField, defineType } from "sanity";
 
 export default defineType({
   name: "shirtVariant",
@@ -16,6 +16,7 @@ export default defineType({
       name: "sku",
       title: "SKU",
       type: "string",
+      description: "This needs to be unique from other variants",
       validation: (Rule) => Rule.required(),
     }),
     defineField({
@@ -24,7 +25,7 @@ export default defineType({
       type: "string",
       initialValue: "M",
       options: {
-        list: ["XS", "S", "M", "L", "XL", "XXL"],
+        list: ["XS", "SM", "M", "LG", "XL", "XXL"],
       },
     }),
     defineField({
@@ -56,7 +57,7 @@ export default defineType({
       color: "color",
     },
     prepare(selection) {
-      const { color, images } = selection
+      const { color, images } = selection;
       return {
         ...selection,
         media: images[0],
@@ -67,7 +68,7 @@ export default defineType({
         //     height: 20,
         //   },
         // }),
-      }
+      };
     },
   },
-})
+});
