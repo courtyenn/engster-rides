@@ -10,6 +10,8 @@ const props = defineProps<{
   onSelect: (option: ColorOption) => void;
   selected: string;
 }>();
+
+const emit = defineEmits(["select"]);
 </script>
 
 <template>
@@ -21,8 +23,8 @@ const props = defineProps<{
         class="color__input"
         type="radio"
         :key="option.value"
-        @click="props.onSelect(option)"
         :checked="option.value === props.selected"
+        @click="emit('select', option)"
       />
       <label
         :for="option.label"

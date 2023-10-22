@@ -5,7 +5,7 @@ import { ref, computed } from "vue";
 import ColorOptions, { type ColorOption } from "./ColorOptions.vue";
 import ProductCarousel from "./ProductCarousel.vue";
 import { PortableText } from "@portabletext/vue";
-import SizeOptions from "./SizeOptions.vue";
+import SizeOptions, { type SizeOption } from "./SizeOptions.vue";
 
 const props = defineProps<{ product: Shirt }>();
 const currentVariantIdx = ref(0);
@@ -25,14 +25,24 @@ const currentVariant = computed<ShirtVariant>(() => {
   return props.product.variants[currentVariantIdx.value];
 });
 
-const currentSizeList = computed<string[]>(() => {
-  const sizeList = new Set<string>();
-  props.product.variants.forEach((variant) => {
-    sizeList.add(variant.size);
-  });
-
-  return [...sizeList];
+const sizeList = new Set<string>();
+props.product.variants.forEach((variant) => {
+  sizeList.add(variant.size);
 });
+
+const currentSizeList = [...sizeList];
+const disabledSizes = computed(() => {
+  return currentSizeList.filter(
+    (size) =>
+      !props.product.variants.find(
+        (variant) =>
+          currentVariant.value.color.color.hex === variant.color.color.hex &&
+          variant.size === size,
+      ),
+  );
+});
+
+console.log(disabledSizes.value);
 
 const handleColorSelect = (option: ColorOption) => {
   currentVariantIdx.value = props.product.variants.findIndex(
@@ -58,16 +68,17 @@ const handleSizeSelect = (option: string) => {
       <dd>
         <ColorOptions
           :options="colorOptions"
-          :on-select="handleColorSelect"
           :selected="currentVariant.color.color.hex"
+          @select="handleColorSelect"
         />
       </dd>
       <dt class="font-bold">Size:</dt>
       <dd>
         <SizeOptions
           :options="currentSizeList"
-          :on-select="handleSizeSelect"
           :selected="currentVariant.size"
+          :disabled-sizes="disabledSizes"
+          @select="handleSizeSelect"
         />
       </dd>
     </dl>
