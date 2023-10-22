@@ -91,6 +91,17 @@ export interface Shirt {
   variants: ShirtVariant[];
 }
 
-export async function getAbout() {
-  const query = groq`*[_type == "page" && name=="about"][0]`;
+export async function getAbout(): Promise<Page> {
+  return await useSanityClient().fetch(
+    groq`*[_type == "page" && title == "About"][0]`,
+  );
+}
+
+export interface Page {
+  _type: "page";
+  _createdAt: string;
+  title: string;
+  slug: Slug;
+  mainImage: ImageAsset;
+  body: PortableTextBlock[];
 }

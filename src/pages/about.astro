@@ -1,16 +1,17 @@
 ---
 import type { InferGetStaticParamsType } from "astro";
-import { PortableText } from "astro-portabletext";
+import PortableText from "../components/common/PortableText.vue";
 import Layout from "../layouts/Layout.astro";
+import { getAbout } from "../utils/sanity";
 
-type Params = InferGetStaticParamsType<"about" | "contact">;
-const { slug } = Astro.params as Params;
+const page = await getAbout();
 ---
 
 <Layout title="Test" description="Test">
-  <section
-    class="container box-border grid h-full grid-cols-1 gap-4 pb-5 pt-5 sm:grid-cols-2"
-  >
-    Test
+  <section class="container box-border grid grid-cols-1 pb-5 pt-5">
+    <h1>{page.title}</h1>
+    <main>
+      <PortableText value={page.body} />
+    </main>
   </section>
 </Layout>
