@@ -80,7 +80,7 @@ const handleSizeSelect = (option: string) => {
       :data-item-name="product.name"
       data-item-custom1-name="size"
       :data-item-custom1-options="currentSizeList.join('|')"
-      :data-custom1-value="currentVariant.size"
+      :data-item-custom1-value="currentVariant.size"
       data-item-custom2-name="color"
       :data-item-custom2-options="colorOptions.map((o) => o.label).join('|')"
       :data-item-custom2-value="currentVariant.color.colorName"

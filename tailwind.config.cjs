@@ -29,6 +29,7 @@ module.exports = {
         bg1: "rgb(var(--color-bg1) / <alpha-value>)",
         text1: "rgb(var(--color-text1) / <alpha-value>)",
         link1: "rgb(var(--color-link1) / <alpha-value>)",
+        disabled1: "rgb(var(--color-disabled1) / <alpha-value>)",
       },
       fontFamily: {
         sans: ["Inter", "Helvetica", "Verdana", "sans-serif"],

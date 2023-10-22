@@ -35,7 +35,7 @@ const props = defineProps<{
       />
       <label
         :for="option"
-        class="size__button box-border w-14 border-2 pb-2 pt-2 text-center font-bold text-black hover:opacity-80"
+        class="size__button box-border w-14 cursor-pointer border-2 pb-2 pt-2 text-center font-bold text-black hover:opacity-80"
       >
         {{ option }}
       </label>
