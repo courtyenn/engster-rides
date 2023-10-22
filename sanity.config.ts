@@ -22,13 +22,18 @@ import { deskTool } from "sanity/desk";
 import { visionTool } from "@sanity/vision";
 import { schemaTypes } from "./schema";
 import { colorInput } from "@sanity/color-input";
+import { MyCustomActions } from "./documentActions/pageAction";
+import { structure } from "./src/structure";
 
 export default defineConfig({
   name: "engsta-rides",
   title: "Engsta Rides",
   projectId,
   dataset,
-  plugins: [deskTool(), visionTool(), colorInput()],
+  plugins: [deskTool({ structure }), visionTool(), colorInput()],
+  document: {
+    actions: MyCustomActions,
+  },
   schema: {
     types: schemaTypes,
   },

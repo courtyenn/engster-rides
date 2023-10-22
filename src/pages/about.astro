@@ -1,0 +1,16 @@
+---
+import type { InferGetStaticParamsType } from "astro";
+import { PortableText } from "astro-portabletext";
+import Layout from "../layouts/Layout.astro";
+
+type Params = InferGetStaticParamsType<"about" | "contact">;
+const { slug } = Astro.params as Params;
+---
+
+<Layout title="Test" description="Test">
+  <section
+    class="container box-border grid h-full grid-cols-1 gap-4 pb-5 pt-5 sm:grid-cols-2"
+  >
+    Test
+  </section>
+</Layout>

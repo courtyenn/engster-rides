@@ -48,10 +48,10 @@ const handleSizeSelect = (option: string) => {
 
 <template>
   <div class="flex flex-col gap-4 sm:gap-8">
-    <h1 class="font-accent text-4xl">{{ product.name }}</h1>
+    <h1 class="font-accent text-4xl font-bold">{{ product.name }}</h1>
     <dl class="flex flex-col gap-4">
       <dt class="sr-only">Price:</dt>
-      <dd class="text-2xl">${{ product.price }}</dd>
+      <dd class="text-2xl font-semibold">${{ product.price }}</dd>
       <dt class="sr-only">Description:</dt>
       <dd><PortableText :value="product.description" /></dd>
       <dt class="inline-block font-bold">Color:</dt>

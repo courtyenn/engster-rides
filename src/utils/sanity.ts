@@ -90,3 +90,7 @@ export interface Shirt {
   price: number;
   variants: ShirtVariant[];
 }
+
+export async function getAbout() {
+  const query = groq`*[_type == "page" && name=="about"][0]`;
+}

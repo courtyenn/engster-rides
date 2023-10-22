@@ -1,6 +1,7 @@
 ---
 const { title, description } = Astro.props;
 import "../styles/global.css";
+import { ViewTransitions } from "astro:transitions";
 ---
 
 <!-- Global Metadata -->
@@ -25,4 +26,4 @@ import "../styles/global.css";
 />
 
 <title>{title}</title>
-<!-- <ViewTransitions /> -->
+<ViewTransitions />
