@@ -1,10 +1,7 @@
 ---
-// https://docs.astro.build/en/guides/view-transitions/
-// import { ViewTransitions } from "astro:transitions"
-import SnipCart from "../components/SnipCart.astro";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
-import SnipCartDiv from "../components/SnipCartDiv.astro";
+import SnipCart from "../components/SnipCart.vue";
 import CommonHead from "../components/CommonHead.astro";
 
 interface Props {
@@ -16,22 +13,19 @@ const { title, description } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en" transition:animate="none">
+<html lang="en">
   <head>
     <CommonHead title={title} description={description} />
   </head>
   <body>
-    <div class="product__layout font-sans" transition:animate="fade">
+    <SnipCart transition:persist="snipcart-base" client:idle />
+    <div class="app__layout font-sans">
       <Header />
-      <main class="">
-        <slot />
-      </main>
+      <slot />
       <Footer />
     </div>
-    <SnipCartDiv />
-    <SnipCart />
     <style>
-      .product__layout {
+      .app__layout {
         display: grid;
         grid-template-rows: 1fr;
         grid-template-columns: 1fr;

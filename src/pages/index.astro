@@ -9,7 +9,7 @@ const shirts = await getShirts();
 ---
 
 <Layout title="Engsta Rides" description="Shirts that make you go vroom vroom">
-  <section>
+  <main>
     {
       shirts.length ? (
         shirts.map((shirt) => <Shirt shirt={shirt} />)
@@ -17,5 +17,5 @@ const shirts = await getShirts();
         <Welcome />
       )
     }
-  </section>
+  </main>
 </Layout>

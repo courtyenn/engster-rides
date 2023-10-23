@@ -1,11 +1,13 @@
 ---
 // https://docs.astro.build/en/guides/view-transitions/
 // import { ViewTransitions } from "astro:transitions"
-import SnipCart from "../components/SnipCart.astro";
+// import SnipCart from "../components/SnipCart.astro";
+import SnipCart from "../components/SnipCart.vue";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import SnipCartDiv from "../components/SnipCartDiv.astro";
 import CommonHead from "../components/CommonHead.astro";
+import BaseLayout from "./BaseLayout.astro";
 interface Props {
   title: string;
   description: string;
@@ -14,33 +16,6 @@ interface Props {
 const { title, description } = Astro.props;
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <CommonHead title={title} description={description} />
-  </head>
-  <body>
-    <div class="base__layout">
-      <Header />
-      <main>
-        <slot />
-      </main>
-      <Footer />
-    </div>
-    <SnipCartDiv />
-    <SnipCart />
-    <style>
-      .base__layout {
-        display: grid;
-        grid-template-rows: 1fr;
-        grid-template-columns: 1fr;
-        min-height: 100vh;
-
-        @media screen and (min-width: 768px) {
-          grid-template-rows: 100px 1fr auto;
-          grid-template-columns: 1fr;
-        }
-      }
-    </style>
-  </body>
-</html>
+<BaseLayout title={title} description={description}>
+  <slot />
+</BaseLayout>

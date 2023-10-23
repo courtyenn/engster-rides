@@ -4,7 +4,7 @@ import type { Shirt, ShirtVariant } from "../../utils/sanity";
 import { ref, computed } from "vue";
 import ColorOptions, { type ColorOption } from "./ColorOptions.vue";
 import ProductCarousel from "./ProductCarousel.vue";
-import { PortableText } from "@portabletext/vue";
+import PortableText from "../common/PortableText.vue";
 import SizeOptions, { type SizeOption } from "./SizeOptions.vue";
 
 const props = defineProps<{ product: Shirt }>();
@@ -41,8 +41,6 @@ const disabledSizes = computed(() => {
       ),
   );
 });
-
-console.log(disabledSizes.value);
 
 const handleColorSelect = (option: ColorOption) => {
   currentVariantIdx.value = props.product.variants.findIndex(

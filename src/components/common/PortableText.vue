@@ -1,9 +1,9 @@
-<script setup lang="ts">
+<script setup>
 import { defineProps, h } from "vue";
-import { type PortableTextComponents, PortableText } from "@portabletext/vue";
+import { PortableText } from "@portabletext/vue";
 
-const props = defineProps<{ value: any }>();
-const components: PortableTextComponents = {
+const props = defineProps();
+const components = {
   block: {
     h1: (_, { slots }) =>
       h("h1", { class: "text-4xl font-accent font-light" }, slots.default?.()),

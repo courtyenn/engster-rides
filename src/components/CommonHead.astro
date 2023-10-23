@@ -2,6 +2,7 @@
 const { title, description } = Astro.props;
 import "../styles/global.css";
 import { ViewTransitions } from "astro:transitions";
+import SnipCart from "./SnipCart.vue";
 ---
 
 <!-- Global Metadata -->
@@ -17,6 +18,11 @@ import { ViewTransitions } from "astro:transitions";
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
 
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:description" content={description} />
+
 <!-- Google fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -27,3 +33,4 @@ import { ViewTransitions } from "astro:transitions";
 
 <title>{title}</title>
 <ViewTransitions />
+<SnipCart client:load />

@@ -4,7 +4,7 @@ import { PortableText } from "astro-portabletext";
 import { urlFor } from "../../utils/image";
 import { getShirt, getShirts, type ShirtColor } from "../../utils/sanity";
 import type { ImageAsset } from "sanity";
-import ProductLayout from "../../layouts/ProductLayout.astro";
+import Layout from "../../layouts/Layout.astro";
 import ProductSelection from "../../components/shop/ProductSelection.vue";
 import { Picture } from "astro-imagetools/components";
 
@@ -21,10 +21,10 @@ const { slug } = Astro.params as Params;
 const shirt = await getShirt(slug);
 ---
 
-<ProductLayout title={shirt.name} description={shirt.excerpt}>
-  <section
+<Layout title={shirt.name} description={shirt.excerpt}>
+  <main
     class="container box-border grid h-full grid-cols-1 gap-4 pb-5 pt-5 sm:grid-cols-2"
   >
     <ProductSelection product={shirt} client:load />
-  </section>
-</ProductLayout>
+  </main>
+</Layout>
