@@ -33,6 +33,9 @@ export default defineConfig({
   adapter: vercel(),
   site: "https://engstarides.com",
   vite: {
+    build: {
+      assetsDir: "_astro"
+    },
     ssr: {
       noExternal: ["oh-vue-icons"],
     },
