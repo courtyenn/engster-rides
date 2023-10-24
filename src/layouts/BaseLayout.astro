@@ -21,7 +21,7 @@ console.log(x, 'test', snipCartKey)
     <CommonHead title={title} description={description} />
   </head>
   <body>
-   <SnipCart transition:persist="snipcart-base" client:load snipCartKey={snipCartKey}/>
+   <SnipCart transition:persist="snipcart-base" client:load snipCartKey={snipCartKey} />
     <div class="app__layout font-sans">
       <Header />
       <slot />
