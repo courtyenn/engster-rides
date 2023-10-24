@@ -94,6 +94,7 @@ const handleSizeSelect = (option: string) => {
       :data-item-custom2-options="colorOptions.map((o) => o.label).join('|')"
       :data-item-custom2-value="currentVariant.color.colorName"
       :data-item-quantity="1"
+      data-item-url="/"
     >
       Add to cart
     </button>

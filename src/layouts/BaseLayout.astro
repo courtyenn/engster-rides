@@ -26,15 +26,10 @@ const { title, description } = Astro.props;
     <style>
       .app__layout {
         display: grid;
-        grid-template-rows: 1fr;
+        grid-template-rows: 100px 1fr auto;
         grid-template-columns: 1fr;
         min-height: 100vh;
         grid-gap: 2rem;
-
-        @media screen and (min-width: 568px) {
-          grid-template-rows: 100px 1fr auto;
-          grid-template-columns: 1fr;
-        }
       }
     </style>
   </body>
