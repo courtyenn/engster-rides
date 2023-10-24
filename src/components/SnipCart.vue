@@ -1,10 +1,14 @@
 <script setup>
 import { onMounted } from "vue";
-
+const props = defineProps({
+  snipCartKey: {
+    type: String,
+    required: true,
+  },
+});
 onMounted(() => {
   window.SnipcartSettings = {
-    publicApiKey:
-      "YjgwYWU1ZTEtMWMyNi00NTlmLWI5Y2ItYTdjMGZkZDlhODg3NjM4MzMwODY0ODU5NzQ0OTEx",
+    publicApiKey: props.snipCartKey,
     loadStrategy: "on-user-interaction",
     modalStyle: "side",
   };

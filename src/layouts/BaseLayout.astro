@@ -10,6 +10,9 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
+const snipCartKey = import.meta.env.PUBLIC_SNIPCART_KEY || "YjgwYWU1ZTEtMWMyNi00NTlmLWI5Y2ItYTdjMGZkZDlhODg3NjM4MzMwODY0ODU5NzQ0OTEx";
+const x = import.meta.env.PUBLIC_SANITY_DATASET;
+console.log(x, 'test', snipCartKey)
 ---
 
 <!doctype html>
@@ -18,7 +21,7 @@ const { title, description } = Astro.props;
     <CommonHead title={title} description={description} />
   </head>
   <body>
-    <SnipCart transition:persist="snipcart-base" client:idle />
+   <SnipCart transition:persist="snipcart-base" client:load snipCartKey={snipCartKey}/>
     <div class="app__layout font-sans">
       <Header />
       <slot />
