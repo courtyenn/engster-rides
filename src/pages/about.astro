@@ -1,16 +1,13 @@
 ---
 import PortableText from "../components/common/PortableText.vue";
 import Layout from "../layouts/Layout.astro";
-import { getAbout } from "../utils/sanity";
-
-const page = await getAbout();
 ---
 
 <Layout title="Test" description="Test">
   <section class="container box-border grid grid-cols-1 pb-5 pt-5">
-    <h1>{page.title}</h1>
+    <h1>About us</h1>
     <main>
-      <PortableText value={page.body} />
+      About
     </main>
   </section>
 </Layout>
