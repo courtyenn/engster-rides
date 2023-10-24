@@ -2,7 +2,7 @@
 import { defineProps, h } from "vue";
 import { PortableText } from "@portabletext/vue";
 
-const props = defineProps<any>();
+const props = defineProps<{ value: any }>();
 const components = {
   block: {
     h1: (_, { slots }) =>
