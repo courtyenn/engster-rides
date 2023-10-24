@@ -82,7 +82,7 @@ const handleSizeSelect = (option: string) => {
     </dl>
 
     <button
-      class="snipcart-add-item rounded-full bg-accent px-4 py-2 font-bold text-white hover:opacity-80"
+      class="snipcart-add-item w-full rounded-full bg-accent px-4 py-2 font-bold text-white hover:opacity-80 lg:w-6/12"
       :data-item-id="product.slug.current"
       :data-item-price="product.price"
       :data-item-description="product.excerpt"

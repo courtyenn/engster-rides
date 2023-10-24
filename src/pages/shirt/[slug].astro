@@ -1,12 +1,8 @@
 ---
 import type { InferGetStaticParamsType } from "astro";
-import { PortableText } from "astro-portabletext";
-import { urlFor } from "../../utils/image";
-import { getShirt, getShirts, type ShirtColor } from "../../utils/sanity";
-import type { ImageAsset } from "sanity";
+import { getShirt, getShirts } from "../../utils/sanity";
 import Layout from "../../layouts/Layout.astro";
 import ProductSelection from "../../components/shop/ProductSelection.vue";
-import { Picture } from "astro-imagetools/components";
 
 export async function getStaticPaths() {
   const shirts = await getShirts();

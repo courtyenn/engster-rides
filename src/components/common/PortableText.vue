@@ -1,8 +1,8 @@
-<script setup>
+<script setup lang="ts">
 import { defineProps, h } from "vue";
 import { PortableText } from "@portabletext/vue";
 
-const props = defineProps();
+const props = defineProps<any>();
 const components = {
   block: {
     h1: (_, { slots }) =>

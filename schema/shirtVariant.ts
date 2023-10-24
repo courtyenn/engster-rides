@@ -1,4 +1,3 @@
-import React from "react";
 import { defineField, defineType } from "sanity";
 
 export default defineType({
@@ -57,17 +56,10 @@ export default defineType({
       color: "color",
     },
     prepare(selection) {
-      const { color, images } = selection;
+      const { images } = selection;
       return {
         ...selection,
         media: images[0],
-        // media: React.createElement("div", {
-        //   style: {
-        //     backgroundColor: color.color.hex,
-        //     width: 20,
-        //     height: 20,
-        //   },
-        // }),
       };
     },
   },

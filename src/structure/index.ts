@@ -1,4 +1,4 @@
-export const structure = (S, context) =>
+export const structure = (S: any) =>
   S.list()
     .title("Content")
     .items([
@@ -12,7 +12,7 @@ export const structure = (S, context) =>
       //       .title("Page"),
       //   ),
       ...S.documentTypeListItems().filter(
-        (listItem) =>
+        (listItem: any) =>
           !["shirtVariant", "shirtColor"].includes(listItem.getId()),
       ),
     ]);
