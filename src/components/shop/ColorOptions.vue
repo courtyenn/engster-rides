@@ -5,11 +5,16 @@ export type ColorOption = {
   label: string;
 };
 export type ColorOptions = ColorOption[];
-const props = defineProps<{
+const dirtyProps = defineProps<{
   options: ColorOptions;
   onSelect: (option: ColorOption) => void;
   selected: string;
 }>();
+const props = {
+  options: dirtyProps.options.map(o => ({...o, label: o.label.replace(/\s/g, '-')})),
+  onSelect: dirtyProps.onSelect,
+  selected: dirtyProps.selected,
+};
 
 const emit = defineEmits(["select"]);
 </script>

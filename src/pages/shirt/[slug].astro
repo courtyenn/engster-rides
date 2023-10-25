@@ -17,7 +17,7 @@ const { slug } = Astro.params as Params;
 const shirt = await getShirt(slug);
 ---
 
-<Layout title={shirt.name} description={shirt.excerpt}>
+<Layout title={`Engsta Rides | ${shirt.name}`} description={shirt.excerpt}>
   <main
     class="container box-border grid h-full grid-cols-1 gap-4 pb-5 pt-5 sm:grid-cols-2"
   >

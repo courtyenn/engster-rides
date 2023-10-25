@@ -43,14 +43,28 @@ const disabledSizes = computed(() => {
 });
 
 const handleColorSelect = (option: ColorOption) => {
-  currentVariantIdx.value = props.product.variants.findIndex(
-    (variant) => variant.color.color.hex === option.value,
-  );
+  const initialIndex = props.product.variants.findIndex(
+    (variant) => variant.color.color.hex === option.value && variant.size === currentVariant.value.size);
+    if(initialIndex === -1) {
+      currentVariantIdx.value = props.product.variants.findIndex(
+        (variant) => variant.color.color.hex === option.value);
+    }
+    else {
+      currentVariantIdx.value = initialIndex;
+    }
 };
 const handleSizeSelect = (option: string) => {
-  currentVariantIdx.value = props.product.variants.findIndex(
-    (variant) => variant.size === option,
+  const initialIndex = props.product.variants.findIndex(
+    (variant) => variant.size === option && variant.color.color.hex === currentVariant.value.color.color.hex,
   );
+  if(initialIndex === -1){
+    currentVariantIdx.value = props.product.variants.findIndex(
+      (variant) => variant.size === option,
+    );
+  }
+  else {
+    currentVariantIdx.value = initialIndex;
+  }
 };
 </script>
 
@@ -94,7 +108,7 @@ const handleSizeSelect = (option: string) => {
       :data-item-custom2-options="colorOptions.map((o) => o.label).join('|')"
       :data-item-custom2-value="currentVariant.color.colorName"
       :data-item-quantity="1"
-      data-item-url="/"
+      :data-item-url="`/shirt/${product.slug.current}`"
     >
       Add to cart
     </button>
