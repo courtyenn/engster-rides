@@ -13,6 +13,12 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: "price",
+      title: "Price",
+      type: "number",
+      initialValue: 0.0,
+    }),
+    defineField({
       name: "inStock",
       title: "In Stock",
       type: "boolean",
@@ -44,21 +50,6 @@ export default defineType({
       title: "Description",
       description: "Long description of the shirt, with markdown support",
       type: "blockContent",
-    }),
-    defineField({
-      name: "price",
-      title: "Price",
-      type: "number",
-      initialValue: 0.0,
-    }),
-    defineField({
-      name: "images",
-      title: "Images",
-      type: "array",
-      of: [
-        { type: "image", name: "Front" },
-        { type: "image", name: "Back" },
-      ],
     }),
   ],
   preview: {

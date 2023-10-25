@@ -30,7 +30,7 @@ export interface Post {
 
 export async function getShirts(): Promise<Shirt[]> {
   return await useSanityClient().fetch(
-    groq`*[_type == "shirt" && defined(slug.current)]`,
+    groq`*[_type == "shirt" && defined(slug.current) && inStock == true]`,
   );
 }
 
