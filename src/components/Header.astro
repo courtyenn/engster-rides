@@ -3,14 +3,14 @@ import Icon from "./common/Icon.vue";
 import { Picture } from "astro-imagetools/components";
 ---
 
-<header class="nav bg-bg1 text-text1 top-0 z-0 flex justify-around font-sans">
+<header class="nav top-0 z-0 flex justify-around bg-bg1 font-sans text-text1">
   <nav class="container flex flex-nowrap items-center justify-between gap-6">
     <a class="header__title" href="/">
       <Picture src="/engsta_logo.png?h=80" alt="Engsta Rides Logo" />
     </a>
 
     <div class="flex basis-7/12 items-center justify-end gap-5">
-      <a href="/about" class="nav__button" prefetch>About</a>
+      <a href="/about" class="nav__button" rel="prefetch">About</a>
       <a href="/contact-us" class="nav__button">Contact</a>
       <a href="https://www.tiktok.com/@mmengsta" class="nav__button">
         <Icon
