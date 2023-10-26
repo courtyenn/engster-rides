@@ -1,13 +1,156 @@
 ---
 import PortableText from "../components/common/PortableText.vue";
 import Layout from "../layouts/Layout.astro";
+import { Picture } from "astro-imagetools/components";
 ---
 
-<Layout title="Test" description="Test">
-  <section class="container box-border grid grid-cols-1 pb-5 pt-5">
-    <h1>About us</h1>
-    <main>
-      About
+<Layout
+  title="Engsta Rides | About Us"
+  description="Porsche cars aren't just machines, they are a way of life. "
+>
+  <section class="container box-border pb-5 pt-5">
+    <main class="overflow-hidden md:grid md:grid-cols-2 md:gap-6">
+      <h1
+        class="w-full pb-10 text-center font-accent text-4xl md:col-span-2 md:h-14"
+      >
+        The Origin Story:
+      </h1>
+      <div class="h-[320px]">
+        <Picture
+          src="/martin.jpg"
+          alt="Martin - Co-Owner"
+          preload="jpg"
+          layout="fill"
+          object-fit="cover"
+        />
+      </div>
+      <p>
+        Growing up in Heidenheim, just a short drive from Stuttgart, I was
+        undoubtedly destined to become a Porsche enthusiast. As a young boy, I'd
+        constantly pester my father to place me in anything with four wheels.
+        Whether it was a flashy car on a carnival ride or the red self-propelled
+        little tike's cozy coupe, my passion for cars was always there. The
+        excitement in me grew as I realized that cars were more than just
+        machines; they were a way of life.
+      </p>
+      <p class="md:col-span-2">
+        As I got older and wiser, the car plastered on my wall was a 1996 Arena
+        Red Porsche 911 4S. It was in that moment that I knew, without a doubt,
+        that I would one day have a Porsche of my own. I'd spend countless hours
+        reading every tidbit of information I could find about Porsche, getting
+        to know all the models, the optional trims, and the horsepower behind
+        each one. I'd daydream about my perfect Porsche, imagining it in every
+        color and variation.
+      </p>
+      <div class="h-[200px] md:col-span-2">
+        <Picture
+          src="/porsche_fate.jpeg"
+          alt="Fated Porsche"
+          preload="jpg"
+          layout="fill"
+          object-fit="cover"
+        />
+      </div>
+      <p class="">
+        During my teenage years, I'd eagerly admire every Porsche that crossed
+        my path. I'd make regular trips to the dealership to check out the
+        latest designs, the cutting-edge technology, and the most robust
+        engines. One of my best friends in college had a 944, and boy, did he
+        make that car sing. Every single day, I yearned for a Porsche, and every
+        single day, I'd just sit and drool, whispering to myself, "One day,
+        Martin, one day."
+      </p>
+      <div class="h-[320px]">
+        <Picture
+          src="/max.jpeg"
+          alt="Max - Co Owner"
+          preload="jpg"
+          layout="fill"
+          object-fit="cover"
+        />
+      </div>
+      <p class="md:col-span-2">
+        Life took its course, and before I knew it, I was working full-time at
+        my machining company, and I became a father. All the extra money I once
+        had seemed to disappear. I drove a practical car, always a European one,
+        of course, but it made sense for my lifestyle. My lifelong dream of
+        owning a Porsche was tucked away, with me thinking it was a distant
+        dream.
+      </p>
+      <div>
+        <Picture
+          src="/martin_porsche.jpeg"
+          alt="Martin with Porsche"
+          preload="jpg"
+          layout="fill"
+          object-fit="cover"
+          rotate="90"
+        />
+      </div>
+      <p>
+        A few more years passed, and I finally made a decision. It was time to
+        search for my first Porsche. I set my sights on a Macan – the "all in
+        one" solution that suited my needs perfectly. But it couldn't just be
+        any Macan; it had to be a Turbo. I called about several Porsche Macan
+        Turbos, but each time, I struck out. Finally, I came across a listing
+        for a black Macan Turbo in NYC, no pictures, just the build sheet and
+        mileage. I called immediately, asked for the salesman, and told him,
+        "Consider it SOLD." Two weeks later, it was on its way HOME.
+      </p>
+      <div class="col-span-2 max-h-[200px]">
+        <Picture
+          src="/porsche_fall.jpeg"
+          alt="Two Porsches during Fall"
+          preload="jpg"
+          layout="fill"
+          objectFit="cover"
+          objectPosition="40% 50%"
+        />
+      </div>
+      <p class="col-span-2">
+        Oh boy, when that beast was delivered to my house, I was like a kid in a
+        candy store. I immediately got to work customizing and tweaking it in
+        every way possible. After all, Porsche is known for being the most
+        customizable car, and that's what makes them so awesome! I changed the
+        trim color and skid plate colors, amped up the exhaust, and there was no
+        turning back. The Porsche bug had bitten me, and it bit hard.
+      </p>
+      <p>
+        What's even more incredible is that my son caught the Porsche bug too.
+        Together, we attended a few Porsche events, met amazing people, and that
+        led us to join the Porsche Club of America. Today, I can proudly say
+        that we are members, and I'm currently serving as the Vice President of
+        the PCA Warbonnets in Oklahoma City, OK. This journey is no longer just
+        mine; it's something my son and I share, and it's brought us closer
+        together.
+      </p>
+      <div class="max-h-[350px]">
+        <Picture
+          src="/martin_max.jpeg"
+          alt="Martin and Max - Co-Owners"
+          preload="jpg"
+          layout="fill"
+          objectFit="cover"
+        />
+      </div>
+      <p class="md:col-span-2">
+        Throughout my life, I'd envisioned and dreamed of my Porsche journey,
+        and now, it's all coming to life in ways I never imagined. But the story
+        doesn't end there. We've got big plans ahead, and we're expanding our
+        passion for cars to the next level. My son and I have decided to create
+        apparel that allow others to proudly show their love for cars just like
+        we do. We're excited about this new endeavor, and we can't wait to see
+        what the future holds for us and our ever-growing Porsche family. It's a
+        thrilling journey that we're happy to share with the world!
+      </p>
+      <div class="max-h-[300px] text-center md:col-span-2">
+        <Picture
+          src="/engsta_logo.png"
+          alt="Engsta Rides Logo"
+          preload="jpg"
+          height="300"
+        />
+      </div>
     </main>
   </section>
 </Layout>
