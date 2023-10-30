@@ -57,3 +57,7 @@
 .snipcart-button-primary {
   background-color: var(--bgColor-buttonPrimary,#1a4db3);
 }
+
+.text-shadow {
+  text-shadow: 0px 2px 6px black;
+}
