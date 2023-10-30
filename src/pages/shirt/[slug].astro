@@ -49,8 +49,7 @@ const shirt = await getShirt(slug);
   <script type="module">
     const imgToHide = document.querySelector(`[data-slug]`);
     setTimeout(() => {
-      console.log(imgToHide);
-      imgToHide.classList.add("hidden");
+      imgToHide?.classList.add("hidden");
     }, 520);
   </script>
 </Layout>

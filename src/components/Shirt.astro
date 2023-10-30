@@ -7,7 +7,7 @@ interface Props {
   shirt: Shirt;
 }
 
-const { name, excerpt, description, price, slug, variants } = Astro.props.shirt;
+const { slug, variants } = Astro.props.shirt;
 const variant = variants[0];
 const image = variant.images[0].asset;
 ---
