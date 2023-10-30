@@ -21,7 +21,7 @@ const props = defineProps<{
       v-for="image in props.images"
       :key="image.asset.assetId"
     >
-      <div class="carousel__item w-5/6 md:w-96">
+      <div class="carousel__item shirt-animation w-5/6 md:w-96">
         <img
           :src="image.asset.url"
           alt="Picture of shirt"

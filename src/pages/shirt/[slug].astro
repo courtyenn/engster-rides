@@ -3,6 +3,7 @@ import type { InferGetStaticParamsType } from "astro";
 import { getShirt, getShirts } from "../../utils/sanity";
 import Layout from "../../layouts/Layout.astro";
 import ProductSelection from "../../components/shop/ProductSelection.vue";
+import { Picture } from "astro-imagetools/components";
 
 export async function getStaticPaths() {
   const shirts = await getShirts();
@@ -21,6 +22,35 @@ const shirt = await getShirt(slug);
   <main
     class="container box-border grid h-full grid-cols-1 gap-4 pb-5 pt-5 sm:grid-cols-2"
   >
+    <div
+      id={`prod-${slug}`}
+      data-slug={slug}
+      class="z-0 col-start-1 row-start-1 w-[384px] justify-self-center transition-transform duration-500 md:pt-[8px]"
+      transition:animate="slide"
+      transition:name={`prod-${slug}`}
+    >
+      <Picture
+        attributes={{
+          picture: {
+            class: "",
+          },
+          img: {
+            class: "fade-in absolute w-20",
+          },
+        }}
+        alt="A cool shirt"
+        position="attention"
+        src={shirt.variants[0].images[0].asset.url}
+        layout="fullWidth"
+      />
+    </div>
     <ProductSelection product={shirt} client:load />
   </main>
+  <script type="module">
+    const imgToHide = document.querySelector(`[data-slug]`);
+    setTimeout(() => {
+      console.log(imgToHide);
+      imgToHide.classList.add("hidden");
+    }, 500);
+  </script>
 </Layout>

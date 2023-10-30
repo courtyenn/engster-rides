@@ -17,7 +17,7 @@ const { title, description } = Astro.props;
   <head>
     <CommonHead title={title} description={description} />
   </head>
-  <body>
+  <body transition:animate="none">
     <div class="app__layout font-sans">
       <Header />
       <slot />

@@ -1,6 +1,6 @@
 ---
 import Welcome from "../components/Welcome.astro";
-import Shirt from "../components/Shirt.astro";
+import Shirts from "../components/Shirts.astro";
 import Layout from "../layouts/Layout.astro";
 import { getShirts } from "../utils/sanity";
 
@@ -9,12 +9,6 @@ const shirts = await getShirts();
 
 <Layout title="Engsta Rides" description="Shirts that make you go vroom vroom">
   <main>
-    {
-      shirts.length ? (
-        shirts.map((shirt) => <Shirt shirt={shirt} />)
-      ) : (
-        <Welcome />
-      )
-    }
+    {shirts.length ? <Shirts shirts={shirts} /> : <Welcome />}
   </main>
 </Layout>

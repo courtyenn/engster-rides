@@ -44,25 +44,29 @@ const disabledSizes = computed(() => {
 
 const handleColorSelect = (option: ColorOption) => {
   const initialIndex = props.product.variants.findIndex(
-    (variant) => variant.color.color.hex === option.value && variant.size === currentVariant.value.size);
-    if(initialIndex === -1) {
-      currentVariantIdx.value = props.product.variants.findIndex(
-        (variant) => variant.color.color.hex === option.value);
-    }
-    else {
-      currentVariantIdx.value = initialIndex;
-    }
+    (variant) =>
+      variant.color.color.hex === option.value &&
+      variant.size === currentVariant.value.size,
+  );
+  if (initialIndex === -1) {
+    currentVariantIdx.value = props.product.variants.findIndex(
+      (variant) => variant.color.color.hex === option.value,
+    );
+  } else {
+    currentVariantIdx.value = initialIndex;
+  }
 };
 const handleSizeSelect = (option: string) => {
   const initialIndex = props.product.variants.findIndex(
-    (variant) => variant.size === option && variant.color.color.hex === currentVariant.value.color.color.hex,
+    (variant) =>
+      variant.size === option &&
+      variant.color.color.hex === currentVariant.value.color.color.hex,
   );
-  if(initialIndex === -1){
+  if (initialIndex === -1) {
     currentVariantIdx.value = props.product.variants.findIndex(
       (variant) => variant.size === option,
     );
-  }
-  else {
+  } else {
     currentVariantIdx.value = initialIndex;
   }
 };
