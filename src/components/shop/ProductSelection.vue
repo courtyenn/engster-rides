@@ -80,7 +80,9 @@ const handleSizeSelect = (option: string) => {
       <dd class="text-2xl font-semibold">${{ product.price }}</dd>
       <dt class="sr-only">Description:</dt>
       <dd><PortableText :value="product.description" /></dd>
-      <dt class="inline-block font-bold">Color:</dt>
+      <dt class="inline-block">
+        <strong>Color:</strong> {{ currentVariant.color.colorName }}
+      </dt>
       <dd>
         <ColorOptions
           :options="colorOptions"

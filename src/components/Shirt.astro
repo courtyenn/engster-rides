@@ -21,6 +21,7 @@ const image = variant.images[0].asset;
     <a
       href={`/shirt/${slug.current}`}
       class="fade-up flex-card group relative z-10 flex max-w-md flex-1 flex-col items-center gap-4 text-center"
+      rel="prefetch"
     >
       <div class="w-80 shrink-0 grow-0 overflow-hidden">
         <div
@@ -34,7 +35,7 @@ const image = variant.images[0].asset;
                 class: "fade-in",
               },
             }}
-            alt="test"
+            alt="Shirts for sale"
             position="attention"
             src={image.url}
             layout="fullWidth"
@@ -45,7 +46,7 @@ const image = variant.images[0].asset;
     <a
       href={`/shirt/${slug.current}`}
       class="rounded-full bg-accent px-4 py-2 text-center font-bold text-white hover:opacity-80 lg:w-6/12"
-      >Buy now</a
+      rel="prefetch">Buy now</a
     >
   </Intersecting>
 </li>
