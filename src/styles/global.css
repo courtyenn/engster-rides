@@ -53,3 +53,7 @@
   animation-delay: 1s;;
   animation: fadein 0.5s ease-in;
 }
+
+.snipcart-button-primary {
+  background-color: var(--bgColor-buttonPrimary,#1a4db3);
+}
