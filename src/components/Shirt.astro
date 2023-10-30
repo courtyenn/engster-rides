@@ -13,7 +13,11 @@ const image = variant.images[0].asset;
 ---
 
 <li>
-  <Intersecting client:visible className="w-full" noSsr={false}>
+  <Intersecting
+    client:visible
+    className="flex w-full flex-col items-center justify-center gap-12"
+    noSsr={false}
+  >
     <a
       href={`/shirt/${slug.current}`}
       class="fade-up flex-card group relative z-10 flex max-w-md flex-1 flex-col items-center gap-4 text-center"
@@ -37,11 +41,11 @@ const image = variant.images[0].asset;
           />
         </div>
       </div>
-      <div class="opacity-90 group-hover:opacity-100">
-        <h2 class="subtitle balance font-bold group-hover:text-primary">
-          {name}
-        </h2>
-      </div>
     </a>
+    <a
+      href={`/shirt/${slug.current}`}
+      class="rounded-full bg-accent px-4 py-2 text-center font-bold text-white hover:opacity-80 lg:w-6/12"
+      >Buy now</a
+    >
   </Intersecting>
 </li>

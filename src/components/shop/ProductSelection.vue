@@ -113,6 +113,7 @@ const handleSizeSelect = (option: string) => {
       :data-item-custom2-value="currentVariant.color.colorName"
       :data-item-quantity="1"
       :data-item-url="`/shirt/${product.slug.current}`"
+      data-item-categories="shirt"
       data-item-weight="155"
     >
       Add to cart

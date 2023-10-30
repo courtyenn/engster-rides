@@ -36,6 +36,12 @@ module.exports = {
         body: ["Inter", "Helvetica", "Verdana", "sans-serif"],
         accent: ["Poppins", "Helvetica", "Verdana", "sans-serif"],
       },
+      fontSize: {
+        "7xl": "5rem",
+        "8xl": "6rem",
+        "9xl": "7rem",
+        "10xl": "8rem",
+      },
       boxShadow: {
         inset: " inset 2px 2px 40px -20px rgba(0, 0, 0, 0.3)",
         "inset-s": " inset 2px 2px 30px -10px rgba(0, 0, 0, 0.4)",

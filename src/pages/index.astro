@@ -3,12 +3,39 @@ import Welcome from "../components/Welcome.astro";
 import Shirts from "../components/Shirts.astro";
 import Layout from "../layouts/Layout.astro";
 import { getShirts } from "../utils/sanity";
+import { BackgroundImage } from "astro-imagetools/components";
 
 const shirts = await getShirts();
 ---
 
 <Layout title="Engsta Rides" description="Shirts that make you go vroom vroom">
-  <main>
+  <BackgroundImage
+    src="/open_sky.jpeg"
+    preload="jpeg"
+    attributes={{
+      container: {
+        class: "h-[30rem] md:h-[500px] border-box md:pt-8 md:pb-16",
+      },
+    }}
+    brightness={0.6}
+  >
+    <div
+      class="flex h-full flex-col items-center justify-center pl-2 pr-2 md:gap-y-10"
+    >
+      <h1 class="text-lg uppercase tracking-wider text-light md:text-5xl">
+        Sitewide Sale
+      </h1>
+      <h2
+        class="text-center text-6xl uppercase leading-tight tracking-wide text-light md:text-9xl"
+      >
+        10% off all shirts
+      </h2>
+    </div>
+  </BackgroundImage>
+  <main class="container flex flex-col gap-16 pb-32 pt-12">
+    <h1 class="text-center font-accent text-5xl font-thin tracking-wider">
+      Our Collection:
+    </h1>
     {shirts.length ? <Shirts shirts={shirts} /> : <Welcome />}
   </main>
 </Layout>

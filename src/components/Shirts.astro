@@ -4,8 +4,6 @@ import ShirtComponent from "./Shirt.astro";
 const { shirts } = Astro.props;
 ---
 
-<section class="flex-grid flex flex-wrap justify-center gap-x-4 gap-y-8 pb-32">
-  <ul class="flex-grid flex flex-wrap justify-center gap-x-4 gap-y-8 pb-32">
-    {shirts.map((shirt: Shirt) => <ShirtComponent shirt={shirt} />)}
-  </ul>
-</section>
+<ul class="flex-grid flex flex-wrap justify-center gap-x-32 gap-y-16">
+  {shirts.map((shirt: Shirt) => <ShirtComponent shirt={shirt} />)}
+</ul>
