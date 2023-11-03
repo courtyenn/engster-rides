@@ -1,6 +1,7 @@
 ---
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
+import SnipCart from "../components/SnipCart.vue";
 import CommonHead from "../components/CommonHead.astro";
 
 interface Props {
@@ -9,6 +10,7 @@ interface Props {
 }
 
 const { title, description } = Astro.props;
+const snipCartKey = import.meta.env.PUBLIC_SNIPCART_KEY;
 ---
 
 <!doctype html>
@@ -22,7 +24,8 @@ const { title, description } = Astro.props;
       <slot />
       <Footer />
     </div>
-    <div id="snipcart" transition:persist></div>
+    <div id="snipcart"></div>
+    <SnipCart client:only snipCartKey={snipCartKey} />
     <style>
       .app__layout {
         display: grid;

@@ -2,8 +2,6 @@
 const { title, description } = Astro.props;
 import "../styles/global.css";
 import { ViewTransitions } from "astro:transitions";
-import SnipCart from "./SnipCart.vue";
-const snipCartKey = import.meta.env.PUBLIC_SNIPCART_KEY;
 ---
 
 <!-- Global Metadata -->
@@ -34,4 +32,3 @@ const snipCartKey = import.meta.env.PUBLIC_SNIPCART_KEY;
 
 <title>{title}</title>
 <ViewTransitions />
-<SnipCart client:load snipCartKey={snipCartKey} transition:persist />
