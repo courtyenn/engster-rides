@@ -108,7 +108,3 @@ onMounted(() => {
   })();
 });
 </script>
-
-<template>
-  <div id="snipcart"></div>
-</template>

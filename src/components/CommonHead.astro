@@ -34,3 +34,4 @@ const snipCartKey = import.meta.env.PUBLIC_SNIPCART_KEY;
 
 <title>{title}</title>
 <ViewTransitions />
+<SnipCart client:load snipCartKey={snipCartKey} transition:persist />

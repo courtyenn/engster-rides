@@ -70,6 +70,41 @@ const handleSizeSelect = (option: string) => {
     currentVariantIdx.value = initialIndex;
   }
 };
+
+const handleAddButton = (e: Event) => {
+  e.preventDefault();
+  e.stopPropagation();
+  window.Snipcart.api.cart.items.add({
+    id: props.product.slug.current,
+    price: props.product.price,
+    description: props.product.excerpt,
+    name: props.product.name,
+    image: currentVariant.value.images[0].asset.url,
+    customFields: [
+      {
+        type: "dropdown",
+        required: false,
+        name: "size",
+        options: currentSizeList.join("|"),
+        value: currentVariant.value.size,
+      },
+      {
+        type: "dropdown",
+        required: false,
+        name: "color",
+        options: colorOptions.value.map((o) => o.label).join("|"),
+        value: currentVariant.value.color.colorName,
+      },
+    ],
+    quantity: 1,
+    url: `/shirt/${props.product.slug.current}`,
+    categories: ["shirt"],
+    weight: 155,
+    shippable: true,
+    stackable: true,
+    taxable: true,
+  });
+};
 </script>
 
 <template>
@@ -103,6 +138,7 @@ const handleSizeSelect = (option: string) => {
 
     <button
       class="snipcart-add-item w-full rounded-full bg-accent px-4 py-2 font-bold text-white hover:opacity-80 lg:w-6/12"
+      @click="handleAddButton"
       :data-item-id="product.slug.current"
       :data-item-price="product.price"
       :data-item-description="product.excerpt"
