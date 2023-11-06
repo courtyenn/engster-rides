@@ -149,6 +149,8 @@ const handleAddButton = (e: Event) => {
       data-item-custom2-name="color"
       :data-item-custom2-options="colorOptions.map((o) => o.label).join('|')"
       :data-item-custom2-value="currentVariant.color.colorName"
+      data-item-custom3-name="TaxJarCategory"
+      data-item-custom3-value="20010"
       data-item-quantity="1"
       :data-item-url="`/shirt/${product.slug.current}`"
       data-item-categories="shirt"
