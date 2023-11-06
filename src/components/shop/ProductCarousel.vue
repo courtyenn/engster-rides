@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
 import type { DumbImageAssetWrapper } from "../../utils/sanity";
-
 const props = defineProps<{
   images: DumbImageAssetWrapper[];
 }>();

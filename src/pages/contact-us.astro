@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import ContactUsForm from "../components/ContactUsForm.vue";
 ---
 
 <Layout
@@ -8,6 +9,8 @@ import Layout from "../layouts/Layout.astro";
 >
   <section class="container box-border grid grid-cols-1 pb-5 pt-5">
     <h1>Contact Us</h1>
-    <main></main>
+    <main>
+      <ContactUsForm client:load />
+    </main>
   </section>
 </Layout>

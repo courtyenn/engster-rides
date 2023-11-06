@@ -30,7 +30,11 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   // Hybrid+adapter is required to support embedded Sanity Studio
   output: "hybrid",
-  adapter: vercel(),
+  adapter: vercel({
+    webAnalytics: {
+      enabled: true,
+    },
+  }),
   site: "https://engstarides.com",
   vite: {
     ssr: {
