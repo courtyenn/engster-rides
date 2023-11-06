@@ -1,4 +1,4 @@
-.zip
+*.zip
 # build output
 dist/
 
