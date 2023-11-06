@@ -9,6 +9,7 @@ import {
   PrInstagram,
   CoTiktok,
   RiFacebookFill,
+  RiLoader5Fill,
 } from "oh-vue-icons/icons";
 
 addIcons(
@@ -20,6 +21,7 @@ addIcons(
   PrInstagram,
   CoTiktok,
   RiFacebookFill,
+  RiLoader5Fill,
 );
 export default (app: App) => {
   app.component("v-icon", OhVueIcon);
