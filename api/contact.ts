@@ -11,7 +11,7 @@ export default async function handler(request: Request) {
     headers: {
       "Content-Type": "application/json",
     },
-    body,
+    body: JSON.stringify(body),
   });
   // console.log(res.body);
   // const data = await res.json();
@@ -30,9 +30,11 @@ export default async function handler(request: Request) {
       },
     );
   } else {
+    const test = await res.text();
+    // console.log(test);
     return new Response(
       JSON.stringify({
-        body: "error",
+        body: test,
       }),
       {
         status: 401,
