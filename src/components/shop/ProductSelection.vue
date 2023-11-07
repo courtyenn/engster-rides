@@ -154,7 +154,6 @@ const handleAddButton = (e: Event) => {
       data-item-quantity="1"
       :data-item-url="`/shirt/${product.slug.current}`"
       data-item-categories="shirt"
-      data-item-weight="155"
     >
       Add to cart
     </button>
