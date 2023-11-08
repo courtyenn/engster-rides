@@ -20,7 +20,7 @@ const shirts = await getShirts();
     brightness={0.6}
   >
     <div
-      class="flex h-full flex-col items-center justify-center pl-2 pr-2 md:gap-y-10"
+      class="flex h-full flex-col items-center justify-center pl-10 pr-10 md:gap-y-10 lg:pl-14 lg:pr-14"
     >
       <h1
         class="text-shadow text-lg uppercase tracking-wider text-light md:text-5xl"
@@ -28,16 +28,34 @@ const shirts = await getShirts();
         Sitewide Sale
       </h1>
       <h2
-        class="text-shadow text-center text-6xl font-bold uppercase leading-tight tracking-wide text-light md:text-9xl"
+        class="text-shadow text-center text-6xl font-bold uppercase leading-tight tracking-wide text-light md:text-7xl lg:text-8xl"
       >
         10% off all shirts
       </h2>
     </div>
   </BackgroundImage>
-  <main class="container flex flex-col gap-16 pb-32 pt-12">
-    <h1 class="text-center font-accent text-5xl font-thin tracking-wider">
-      Our Collection:
+  <main class="container box-border flex flex-col gap-16 pb-32 pt-14">
+    <h1 class="text-center">
+      <em class="font-accent">NEWEST</em>
+      <p class="text-graffiti text-4xl tracking-wider sm:text-5xl">
+        Spray Paint
+      </p>
+      <em class="font-accent">COLLECTION</em>
     </h1>
     {shirts.length ? <Shirts shirts={shirts} /> : <Welcome />}
+
+    <section class="mt-6 flex flex-col gap-y-6">
+      <div class="text-center">
+        <h1 class="text-center font-accent text-5xl">
+          Find us at <br /><strong>Porsche Palooza</strong>
+        </h1>
+        <h2>November 8 - November 12</h2>
+      </div>
+      <img
+        src="/palooza_2023_big.png"
+        alt="PCA Palooza"
+        class="ml-auto mr-auto max-h-80"
+      />
+    </section>
   </main>
 </Layout>

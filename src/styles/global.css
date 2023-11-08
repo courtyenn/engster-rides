@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: "a Attack Graffiti";
+  src: url("/public/fontFamily/aAttackGraffiti.ttf");
+}
+
 @layer base {
   :root {
     --color-primary: 75 38 143;
@@ -60,4 +65,8 @@
 
 .text-shadow {
   text-shadow: 0px 2px 6px black;
+}
+
+.text-graffiti {
+  font-family: 'a Attack Graffiti', sans-serif;
 }
