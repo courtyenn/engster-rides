@@ -2,6 +2,7 @@
 const { title, description } = Astro.props;
 import "../styles/global.css";
 import { ViewTransitions } from "astro:transitions";
+import { ImageSupportDetection } from "astro-imagetools/components";
 ---
 
 <!-- Global Metadata -->
@@ -32,3 +33,4 @@ import { ViewTransitions } from "astro:transitions";
 
 <title>{title}</title>
 <ViewTransitions />
+<ImageSupportDetection />

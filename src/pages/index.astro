@@ -3,15 +3,13 @@ import Welcome from "../components/Welcome.astro";
 import Shirts from "../components/Shirts.astro";
 import Layout from "../layouts/Layout.astro";
 import { getShirts } from "../utils/sanity";
-import { BackgroundImage } from "astro-imagetools/components";
-
+import { BackgroundImage, Picture } from "astro-imagetools/components";
 const shirts = await getShirts();
 ---
 
 <Layout title="Engsta Rides" description="Shirts that make you go vroom vroom">
   <BackgroundImage
-    src="/open_sky.jpeg"
-    preload="jpeg"
+    src="/src/assets/pics/open_sky.jpeg"
     attributes={{
       container: {
         class: "h-[30rem] md:h-[500px] border-box md:pt-8 md:pb-16",
@@ -43,19 +41,26 @@ const shirts = await getShirts();
       <em class="font-accent">COLLECTION</em>
     </h1>
     {shirts.length ? <Shirts shirts={shirts} /> : <Welcome />}
-
-    <section class="mt-6 flex flex-col gap-y-6">
-      <div class="text-center">
-        <h1 class="text-center font-accent text-5xl">
-          Find us at <br /><strong>Porsche Palooza</strong>
-        </h1>
-        <h2>November 8 - November 12</h2>
-      </div>
-      <img
-        src="/palooza_2023_big.png"
-        alt="PCA Palooza"
-        class="ml-auto mr-auto max-h-80"
-      />
-    </section>
   </main>
+  <section class="grated-bg mt-6 pb-14 pt-14">
+    <div
+      class="mb-4 ml-auto mr-auto flex w-full max-w-lg flex-col gap-y-6 rounded bg-white px-8 pb-8 pt-6 text-center shadow-md"
+    >
+      <h1 class="text-center font-accent text-5xl">
+        Find us at <br /><strong>Porsche Palooza</strong>
+      </h1>
+      <h2>November 8 - November 12</h2>
+      <Picture
+        src="/src/assets/pics/palooza_2023_big.png"
+        alt="PCA Palooza"
+        attributes={{
+          img: {
+            class: "ml-auto mr-auto max-h-80",
+          },
+        }}
+        layout="fill"
+        objectFit="contain"
+      />
+    </div>
+  </section>
 </Layout>

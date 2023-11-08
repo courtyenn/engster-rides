@@ -20,19 +20,19 @@ const image = variant.images[0].asset;
   >
     <a
       href={`/shirt/${slug.current}`}
-      class="fade-up flex-card group relative z-10 flex max-w-md flex-1 flex-col items-center gap-4 text-center"
+      class="scale-80 flex-card group relative z-10 flex max-w-md flex-1 flex-col items-center gap-4 text-center"
       rel="prefetch"
     >
       <div class="w-80 shrink-0 grow-0 overflow-hidden">
         <div
-          class="transition-transform duration-500 group-hover:scale-110 group-hover:duration-[3s]"
+          class="transition-transform duration-500 group-hover:scale-100 group-hover:duration-[3s]"
           transition:animate="slide"
           transition:name={`prod-${slug.current}`}
         >
           <Picture
             attributes={{
               picture: {
-                class: "fade-in",
+                class: "scale-80",
               },
             }}
             alt="Shirts for sale"

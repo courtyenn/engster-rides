@@ -4,7 +4,7 @@
 
 @font-face {
   font-family: "a Attack Graffiti";
-  src: url("/public/fontFamily/aAttackGraffiti.ttf");
+  src: url("/fontFamily/aAttackGraffiti.ttf");
 }
 
 @layer base {
@@ -55,7 +55,7 @@
   }
 }
 .shirt-animation {
-  animation-delay: 1s;;
+  animation-delay: 1s;
   animation: fadein 0.5s ease-in;
 }
 
@@ -69,4 +69,10 @@
 
 .text-graffiti {
   font-family: 'a Attack Graffiti', sans-serif;
+}
+
+.grated-bg {
+  background-image: url('/bo-play.png');
+  background-repeat: repeat;
+  background-color: #333333;
 }

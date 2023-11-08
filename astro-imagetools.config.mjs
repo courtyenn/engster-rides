@@ -1,10 +1,10 @@
 import { defineConfig } from "astro-imagetools/config";
 
 export default defineConfig({
-  format: ["webp"],
-
+  format: ["png"],
+  placeholder: "blurred",
   formatOptions: {
-    jpg: {
+    jpeg: {
       quality: 70,
       chromaSubsampling: "4:4:4",
       mozjpeg: true,

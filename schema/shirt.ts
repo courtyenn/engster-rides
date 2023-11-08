@@ -19,6 +19,12 @@ export default defineType({
       initialValue: 0.0,
     }),
     defineField({
+      name: "discountPrice",
+      title: "Discount Price",
+      type: "number",
+      initialValue: 0.0,
+    }),
+    defineField({
       name: "inStock",
       title: "In Stock",
       type: "boolean",
