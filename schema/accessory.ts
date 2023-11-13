@@ -39,14 +39,14 @@ export default defineType({
     defineField({
       name: "excerpt",
       title: "Short description",
-      description: "Describe the shirt in a few words",
+      description: "Describe the accessory in a few words",
       type: "string",
     }),
     defineField({
       name: "description",
       title: "Description",
-      description: "Long description of the shirt, with markdown support",
-      type: "blockContent",
+      description: "Long description",
+      type: "string",
     }),
     defineField({
       name: "images",
