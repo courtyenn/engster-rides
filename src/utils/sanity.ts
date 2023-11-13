@@ -3,31 +3,6 @@ import type { PortableTextBlock } from "@portabletext/types";
 import type { ImageAsset, Slug } from "@sanity/types";
 import groq from "groq";
 
-export async function getPosts(): Promise<Post[]> {
-  return await useSanityClient().fetch(
-    groq`*[_type == "post" && defined(slug.current)] | order(_createdAt desc)`,
-  );
-}
-
-export async function getPost(slug: string): Promise<Post> {
-  return await useSanityClient().fetch(
-    groq`*[_type == "post" && slug.current == $slug][0]`,
-    {
-      slug,
-    },
-  );
-}
-
-export interface Post {
-  _type: "post";
-  _createdAt: string;
-  title?: string;
-  slug: Slug;
-  excerpt?: string;
-  mainImage?: ImageAsset;
-  body: PortableTextBlock[];
-}
-
 export async function getShirts(): Promise<Shirt[]> {
   return await useSanityClient().fetch(
     groq`*[_type == "shirt" && defined(slug.current) && inStock == true]{
@@ -35,6 +10,7 @@ export async function getShirts(): Promise<Shirt[]> {
       name,
       excerpt,
       description,
+      discountPrice,
       price,
       variants[]-> {
         name,
@@ -58,6 +34,7 @@ export async function getShirt(slug: string): Promise<Shirt> {
       name,
       excerpt,
       description,
+      discountPrice,
       price,
       variants[]-> {
         name,
@@ -72,7 +49,6 @@ export async function getShirt(slug: string): Promise<Shirt> {
     }`,
   );
 }
-
 export interface ShirtColor {
   _type: "shirtColor";
   _createdAt: string;
@@ -101,23 +77,35 @@ export interface Shirt {
   name: string;
   slug: Slug;
   excerpt: string;
-  images: ImageAsset[];
   description: PortableTextBlock[];
   price: number;
   variants: ShirtVariant[];
+  discountPrice: number;
 }
 
-export async function getAbout(): Promise<Page> {
-  return await useSanityClient().fetch(
-    groq`*[_type == "page" && title == "About"][0]`,
-  );
-}
-
-export interface Page {
-  _type: "page";
-  _createdAt: string;
-  title: string;
+export interface Accessory {
+  _type: "accessory";
+  name: string;
   slug: Slug;
-  mainImage: ImageAsset;
-  body: PortableTextBlock[];
+  excerpt: string;
+  images: DumbImageAssetWrapper[];
+  description: PortableTextBlock[];
+  price: number;
+}
+
+export async function getAccessories(): Promise<Accessory[]> {
+  return await useSanityClient().fetch(
+    groq`*[_type == "accessory" && inStock == true]{
+      name,
+      excerpt,
+      description,
+      discountPrice,
+      price,
+      weight,
+      inStock,
+      images[] {
+        asset->
+      }
+    }`,
+  );
 }
