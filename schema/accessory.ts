@@ -39,13 +39,14 @@ export default defineType({
     defineField({
       name: "excerpt",
       title: "Short description",
-      description: "Describe the accessory in a few words",
+      description:
+        "To appear in SEO search results. Keep it short and use keywords.",
       type: "string",
     }),
     defineField({
       name: "description",
       title: "Description",
-      description: "Long description",
+      description: "Describe the product. Use for product page.",
       type: "string",
     }),
     defineField({

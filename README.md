@@ -76,3 +76,11 @@ export default defineCliConfig({
   },
 });
 ```
+
+## Testing Vercel Edge Functions
+
+Use the global `vercel` CLI and run
+
+```
+vercel dev
+```
