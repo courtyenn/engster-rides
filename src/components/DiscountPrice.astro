@@ -1,0 +1,28 @@
+---
+interface Props {
+  price: number;
+  discountPrice: number;
+}
+const { discountPrice, price } = Astro.props;
+---
+
+<div class="flex flex-col items-center">
+  <div class="price">
+    <span class="price__value text-md relative">${price}</span>
+  </div>
+  <div class="price price--discounted">
+    <span class="relative">
+      <strong class="text-bold text-2xl">${discountPrice}</strong></span
+    >
+  </div>
+</div>
+<style>
+  .price__value::before {
+    content: "";
+    position: absolute;
+    background-color: red;
+    width: 100%;
+    height: 1px;
+    top: 50%;
+  }
+</style>

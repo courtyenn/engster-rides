@@ -2,12 +2,13 @@
 import type { Shirt } from "../utils/sanity";
 import Intersecting from "./common/Intersecting.vue";
 import { Picture } from "astro-imagetools/components";
+import DiscountPrice from "./DiscountPrice.astro";
 
 interface Props {
   shirt: Shirt;
 }
 
-const { slug, variants } = Astro.props.shirt;
+const { slug, variants, discountPrice, price } = Astro.props.shirt;
 const variant = variants[0];
 const image = variant.images[0].asset;
 ---
@@ -15,7 +16,7 @@ const image = variant.images[0].asset;
 <li>
   <Intersecting
     client:visible
-    className="flex w-full flex-col items-center justify-center gap-12"
+    className="flex w-full flex-col items-center justify-center gap-6"
     noSsr={false}
   >
     <a
@@ -29,7 +30,12 @@ const image = variant.images[0].asset;
           transition:animate="slide"
           transition:name={`prod-${slug.current}`}
         >
-          <Picture
+          <img
+            src={`${image.url}?w=320&dpr=2&sharp=50`}
+            alt="Shirts for sale"
+            class="scale-80"
+          />
+          <!-- <Picture
             attributes={{
               picture: {
                 class: "scale-80",
@@ -39,13 +45,25 @@ const image = variant.images[0].asset;
             position="attention"
             src={image.url}
             layout="fullWidth"
-          />
+          /> -->
         </div>
       </div>
     </a>
+    {
+      discountPrice > 0 && (
+        <DiscountPrice discountPrice={discountPrice} price={price} />
+      )
+    }
+    {
+      !!discountPrice === false && (
+        <div class="price">
+          <strong class="text-bold text-2xl">${price}</strong>
+        </div>
+      )
+    }
     <a
       href={`/shirt/${slug.current}`}
-      class="rounded-full bg-accent px-4 py-2 text-center font-bold text-white hover:opacity-80 lg:w-6/12"
+      class="w-80 rounded-full bg-accent px-4 py-2 text-center text-lg font-bold text-white hover:opacity-80 lg:w-6/12"
       rel="prefetch">Buy now</a
     >
   </Intersecting>

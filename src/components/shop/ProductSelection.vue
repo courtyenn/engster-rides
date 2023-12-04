@@ -114,7 +114,27 @@ const handleAddButton = (e: Event) => {
     </h1>
     <dl class="flex flex-col gap-4">
       <dt class="sr-only">Price:</dt>
-      <dd class="text-2xl font-semibold">${{ product.price }}</dd>
+      <dd
+        :class="{
+          'text-2xl font-semibold': !!product.discountPrice === false,
+          discount__price: product.discountPrice > 0,
+        }"
+      >
+        ${{ product.price }}
+      </dd>
+
+      <dt
+        v-if="product.discountPrice > 0"
+        class="sr-only"
+      >
+        Discount Price:
+      </dt>
+      <dd
+        v-if="product.discountPrice > 0"
+        class="text-2xl font-semibold"
+      >
+        ${{ product.discountPrice }}
+      </dd>
       <dt class="sr-only">Description:</dt>
       <dd><PortableText :value="product.description" /></dd>
       <dt class="inline-block">
@@ -162,3 +182,8 @@ const handleAddButton = (e: Event) => {
   </div>
   <ProductCarousel :images="currentVariant.images" />
 </template>
+<style scoped>
+.discount__price {
+  text-decoration: line-through;
+}
+</style>

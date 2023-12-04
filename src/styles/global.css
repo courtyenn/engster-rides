@@ -48,19 +48,21 @@
 
 @keyframes fadein {
   0% {
+    transform: scale(0.5);
     opacity: 0;
   }
   100% {
     opacity: 1;
+    transform: scale(1);
   }
 }
 .shirt-animation {
-  animation-delay: 1s;
-  animation: fadein 0.5s ease-in;
+  animation-delay: 0.5s;
+  animation: fadein 0.3s ease-in-out;
 }
 
 .snipcart-button-primary {
-  background-color: var(--bgColor-buttonPrimary,#1a4db3);
+  background-color: var(--bgColor-buttonPrimary, #1a4db3);
 }
 
 .text-shadow {
@@ -68,11 +70,11 @@
 }
 
 .text-graffiti {
-  font-family: 'a Attack Graffiti', sans-serif;
+  font-family: "a Attack Graffiti", sans-serif;
 }
 
 .grated-bg {
-  background-image: url('/bo-play.png');
+  background-image: url("/bo-play.png");
   background-repeat: repeat;
   background-color: #333333;
 }

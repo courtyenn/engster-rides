@@ -21,10 +21,21 @@ const props = defineProps<{
       :key="image.asset.assetId"
     >
       <div class="carousel__item shirt-animation w-5/6 md:w-96">
-        <img
-          :src="image.asset.url"
-          alt="Picture of shirt"
-        />
+        <picture>
+          <source :src="`${image.asset.url}?w=384&h=486&dpr=1&sharp=30`" />
+          <source
+            media="(min-width: 700px)"
+            :src="`${image.asset.url}?w=384&h=486&dpr=2&sharp=30`"
+          />
+          <source
+            media="(min-width: 900px)"
+            :src="`${image.asset.url}?w=384&h=486&dpr=3&sharp=30`"
+          />
+          <img
+            :src="`${image.asset.url}?w=384&h=486&dpr=3&sharp=30`"
+            alt="Picture of shirt"
+          />
+        </picture>
       </div>
     </Slide>
   </Carousel>
