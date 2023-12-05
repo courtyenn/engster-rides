@@ -1,0 +1,54 @@
+---
+const { product } = Astro.props;
+import { Picture } from 'astro:assets';
+const id = product.name.replace(/\s/g, '-').toLowerCase();
+---
+<div class="container py-12">
+  <div class="flex flex-wrap gap-6">
+    <img class="w-1/2" src={product.images[0].asset.url} alt={product.images[0].alt} />
+    <!-- <Picture alt={product.images[0].asset.alt} src={product.images[0].asset.url}/> -->
+    <div>
+      <h2 class="text-2xl font-semibold">{product.name}</h2>
+      <dl class="flex flex-col gap-4">
+        <dt class="sr-only">Price:</dt>
+        <dd
+          class={`${!!product.discountPrice === false ? 'text-2xl font-semibold': 'discount__price'}`}
+        >
+          ${ product.price }
+        </dd>
+
+        {product.discountPrice > 0 && <dt
+          class="sr-only"
+        >
+          Discount Price:
+        </dt>}
+        {product.discountPrice > 0 && <dd
+          class="text-2xl font-semibold"
+        >
+          ${ product.discountPrice }
+        </dd>
+      }
+        <dt class="sr-only">Description:</dt>
+        <dd>{product.description}</dd>
+        
+      </dl>
+      <button
+        class="snipcart-add-item w-full rounded-full bg-accent px-4 py-2 font-bold text-white hover:opacity-80 lg:w-6/12"
+        @click="handleAddButton"
+        data-item-id={id}
+        data-item-price={product.price}
+        data-item-description={product.excerpt}
+        data-item-name={product.name}
+        data-item-custom1-name="TaxJarCategory"
+        data-item-custom1-value={product.taxCode}
+        data-item-custom1-type="hidden"
+        data-item-quantity="1"
+        data-item-url={`/swag/${product.slug}`}
+        data-item-categories="accessory"
+        data-item-weight={product.weight}
+      >
+        Add to cart
+      </button>
+    </div>
+  </div>
+</div>

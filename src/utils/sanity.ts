@@ -60,6 +60,7 @@ export interface ShirtColor {
 
 export interface DumbImageAssetWrapper {
   asset: ImageAsset;
+  alt: string;
 }
 export interface ShirtVariant {
   _type: "shirtVariant";
@@ -91,6 +92,7 @@ export interface Accessory {
   images: DumbImageAssetWrapper[];
   description: PortableTextBlock[];
   price: number;
+  taxCode: string;
 }
 
 export async function getAccessories(): Promise<Accessory[]> {
@@ -99,11 +101,13 @@ export async function getAccessories(): Promise<Accessory[]> {
       name,
       excerpt,
       description,
+      taxCode,
       discountPrice,
       price,
       weight,
       inStock,
       images[] {
+        alt,
         asset->
       }
     }`,

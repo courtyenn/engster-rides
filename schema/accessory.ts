@@ -50,10 +50,26 @@ export default defineType({
       type: "string",
     }),
     defineField({
+      name: "taxCode",
+      title: "Tax Code",
+      description: "TaxJar Categorization Tax Code",
+      type: "string",
+    }),
+    defineField({
       name: "images",
       title: "Images",
       type: "array",
-      of: [{ type: "image", options: { hotspot: true } }],
+      of: [{ 
+        type: "image", 
+        options: { hotspot: true }, 
+        fields: [
+          { 
+            name: 'alt',
+            type: 'string',
+            validation: Rule => Rule.required(),
+          }
+        ] 
+      }],
     }),
   ],
   preview: {
