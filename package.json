@@ -1,5 +1,5 @@
 {
-  "name": "app",
+  "name": "engstarides",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -35,6 +35,7 @@
     "autoprefixer": "10.4.16",
     "groq": "3.17.0",
     "oh-vue-icons": "1.0.0-rc3",
+    "postcss": "^8.4.33",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sanity": "3.17.0",
