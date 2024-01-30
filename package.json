@@ -39,7 +39,6 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sanity": "3.17.0",
-    "sharp": "^0.33.2",
     "vue": "^3.3.4",
     "vue3-carousel": "^0.3.1"
   },
@@ -57,5 +56,10 @@
   },
   "engines": {
     "node": ">= 16.12"
+  },
+  "overrides": {
+    "astro": {
+      "sharp": "0.33.2"
+    }
   }
 }

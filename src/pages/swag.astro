@@ -1,19 +1,19 @@
 ---
-import Welcome from "../components/Welcome.astro";
-import Shirts from "../components/Shirts.astro";
 import Layout from "../layouts/Layout.astro";
 import { getAccessories } from "../utils/sanity";
 import { BackgroundImage, Picture } from "astro-imagetools/components";
 const accessories = await getAccessories();
-import Swag from "../components/Swag.astro"
+import SwagItem from "../components/SwagItem.astro";
 ---
 
-<Layout title="Engsta Rides | Custom Engsta Rides Swag" description="Tumblers, gear head swag, custom car fanatic swag, y'know dad stuff">
-  <h1 class="text-5xl text-center text-bold px-4 md:px-16 mx-auto mb-12 mt-6">
+<Layout
+  title="Engsta Rides | Custom Engsta Rides Swag"
+  description="Tumblers, gear head swag, custom car fanatic swag, y'know dad stuff"
+>
+  <h1 class="text-bold mx-auto mb-24 mt-20 px-4 text-center text-5xl md:px-16">
     Swag
   </h1>
-  {accessories.map(a => <Swag product={a}/>)}
-  <script>
-    // Call SnipCart add manually
-  </script>
+  <div class="container mb-20 flex flex-wrap gap-y-36">
+    {accessories.map((a, i) => <SwagItem product={a} reverse={i % 2 === 0} />)}
+  </div>
 </Layout>
