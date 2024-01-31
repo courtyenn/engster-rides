@@ -1,15 +1,18 @@
 ---
 import Icon from "./common/Icon.vue";
 import { Picture } from "astro-imagetools/components";
+import MobileNav from "./MobileNav.astro";
 ---
 
-<header class="nav top-0 z-0 flex justify-around bg-bg1 font-sans text-text1">
+<header
+  class="nav relative top-0 z-0 z-[11] flex justify-around bg-bg1 font-sans text-text1"
+>
   <nav class="container flex flex-nowrap items-center justify-between gap-6">
     <a class="header__title" href="/">
       <Picture src="/engsta_logo.png?h=80" alt="Engsta Rides Logo" />
     </a>
 
-    <div class="flex basis-7/12 items-center justify-end gap-5">
+    <div class="hidden basis-7/12 items-center justify-end gap-5 sm:flex">
       <a href="/about" class="nav__button" rel="prefetch">About</a>
       <a href="/swag" class="nav__button" rel="prefetch">swag</a>
       <a href="/contact-us" class="nav__button">Contact</a>
@@ -35,6 +38,7 @@ import { Picture } from "astro-imagetools/components";
         <span class="snipcart-items-count"></span>
       </button>
     </div>
+    <div class="flex h-[37px] w-[50px] sm:hidden"><MobileNav /></div>
   </nav>
 </header>
 <style>

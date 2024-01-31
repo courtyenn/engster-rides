@@ -1,0 +1,128 @@
+<button id="menuToggle" aria-expanded="false" aria-controls="mobileMenu">
+  <p class="sr-only">Menu</p>
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+<ul
+  id="mobileMenu"
+  class="gap-y-20 bg-bg1 py-2 text-center text-4xl"
+  aria-labelledby="dropdownDefaultButton"
+>
+  <li>
+    <a href="/?scroll=true" class="block">Shirts</a>
+  </li>
+  <li>
+    <a href="/swag" class="block">Swag</a>
+  </li>
+  <li>
+    <a href="/contact-us" class="block">Contact Us</a>
+  </li>
+  <li>
+    <a href="/" class="block">Home</a>
+  </li>
+</ul>
+<script is:inline>
+  function listener() {
+    const button = document.querySelector("#menuToggle");
+    const menu = document.querySelector("#mobileMenu");
+    if (menu.classList.contains("is-active")) {
+      menu.classList.remove("is-active");
+      button.setAttribute("aria-expanded", "false");
+    } else {
+      menu.classList.add("is-active");
+      button.setAttribute("aria-expanded", "true");
+    }
+  }
+  document.addEventListener("astro:before-preparation", function () {
+    document.removeEventListener("astro:page-load", listener);
+  });
+  document.addEventListener("astro:page-load", function () {
+    const button = document.querySelector("#menuToggle");
+    button.addEventListener("click", listener);
+  });
+</script>
+<style>
+  #menuToggle {
+    position: absolute;
+    z-index: 9;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 50px;
+    right: 30px;
+  }
+  #mobileMenu {
+    position: fixed;
+  }
+  @media screen(md) {
+    #mobileMenu,
+    html[data-is-top="true"] #menuToggle {
+      display: none;
+    }
+  }
+  #menuToggle span {
+    display: flex;
+    width: 100%;
+    height: 3px;
+    position: relative;
+    background: #fff;
+    border-radius: 3px;
+    z-index: 1;
+    transform-origin: 5px 0px;
+    transition:
+      transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+      background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1),
+      opacity 0.55s ease;
+  }
+  #menuToggle span:first-of-type {
+    transform-origin: 0% 0%;
+  }
+  #menuToggle span:last-of-type {
+    transform-origin: 0% 100%;
+  }
+  #menuToggle[aria-expanded="true"] span:first-of-type {
+    transform: rotate(45deg) translate(0, 0px);
+  }
+  #menuToggle[aria-expanded="true"] span:nth-of-type(2) {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2);
+  }
+  #menuToggle[aria-expanded="true"] span:last-of-type {
+    transform: rotate(-45deg) translate(0, 0px);
+  }
+
+  #mobileMenu {
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    box-shadow: 0 0 10px #85888c;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    transform-origin: 0% 0%;
+    transform: translate(102vw, 0);
+    transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #mobileMenu.is-active {
+    transform: none;
+  }
+
+  #mobileMenu li {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2);
+    transition:
+      transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1) 0.2s,
+      opacity 0.55s ease 0.2s;
+  }
+
+  #mobileMenu#mobileMenu.is-active li {
+    opacity: 1;
+    transform: rotate(0deg) scale(1, 1);
+  }
+</style>

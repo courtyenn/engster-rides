@@ -34,7 +34,10 @@ const shirts = await getShirts();
       </h1> -->
     </div>
   </BackgroundImage>
-  <main class="container box-border flex flex-col gap-16 pb-32 pt-14">
+  <main
+    id="main__content"
+    class="container box-border flex flex-col gap-16 pb-32 pt-14"
+  >
     <h1 class="text-center">
       <em class="font-accent">NEWEST</em>
       <p class="text-graffiti text-4xl tracking-wider sm:text-5xl">
@@ -67,4 +70,15 @@ const shirts = await getShirts();
       />
     </div>
   </section>
+  <script is:inline>
+    document.addEventListener("astro:page-load", function () {
+      const searchParams = new URLSearchParams(window.location.search);
+      if (searchParams.get("scroll")) {
+        const element = document.getElementById("main__content");
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    });
+  </script>
 </Layout>
