@@ -10,7 +10,7 @@ const props = defineProps<{
 <template>
   <Carousel
     :items-to-show="1"
-    class="col-start-1 row-span-full row-start-1"
+    class=""
   >
     <template #addons>
       <Navigation />
@@ -21,25 +21,24 @@ const props = defineProps<{
       v-for="image in props.images"
       :key="image.asset.assetId"
     >
-      <div class="carousel__item shirt-animation w-5/6 md:w-96">
+      <div class="carousel__item shirt-animation">
         <picture>
-          <source :src="`${image.asset.url}?w=384&h=486&dpr=1&sharp=30`" />
+          <source
+            :src="`${image.asset.url}?w=384&h=486&dpr=1&sharp=30`"
+            class="max-h-[380px]"
+          />
           <source
             media="(min-width: 700px)"
             :src="`${image.asset.url}?w=384&h=486&dpr=2&sharp=30`"
-          />
-          <source
-            media="(min-width: 900px)"
-            :src="`${image.asset.url}?w=384&h=486&dpr=3&sharp=30`"
+            class="max-h-[400px]"
           />
           <img
-            :src="`${image.asset.url}?w=384&h=486&dpr=3&sharp=30`"
+            :src="`${image.asset.url}`"
             :alt="`${image.alt}`"
+            class="max-h-[500px]"
           />
         </picture>
       </div>
     </Slide>
   </Carousel>
 </template>
-
-<style scoped></style>

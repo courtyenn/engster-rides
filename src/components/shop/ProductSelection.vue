@@ -179,7 +179,9 @@ const handleAddButton = (e: Event) => {
       Add to cart
     </button>
   </div>
-  <ProductCarousel :images="currentVariant.images" />
+  <div class="col-start-1 row-span-full row-start-1 w-5/6 md:w-96">
+    <ProductCarousel :images="currentVariant.images" />
+  </div>
 </template>
 <style scoped>
 .discount__price {
