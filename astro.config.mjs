@@ -21,7 +21,6 @@ import vercel from "@astrojs/vercel/serverless";
 import vue from "@astrojs/vue";
 import compress from "astro-compress";
 
-import prefetch from "@astrojs/prefetch";
 import { astroImageTools } from "astro-imagetools";
 import tailwindIntegration from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
@@ -30,6 +29,7 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   // Hybrid+adapter is required to support embedded Sanity Studio
   output: "hybrid",
+  prefetch: true,
   adapter: vercel({
     webAnalytics: {
       enabled: true,
@@ -56,7 +56,6 @@ export default defineConfig({
     sitemap(),
     tailwindIntegration(),
     astroImageTools,
-    prefetch(),
     compress({
       CSS: true,
       HTML: {

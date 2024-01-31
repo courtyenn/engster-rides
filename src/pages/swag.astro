@@ -1,0 +1,18 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getAccessories } from "../utils/sanity";
+const accessories = await getAccessories();
+import SwagItem from "../components/SwagItem.astro";
+---
+
+<Layout
+  title="Engsta Rides | Custom Engsta Rides Swag"
+  description="Tumblers, gear head swag, custom car fanatic swag, y'know dad stuff"
+>
+  <h1 class="text-bold mx-auto mb-24 mt-20 px-4 text-center text-5xl md:px-16">
+    Swag
+  </h1>
+  <div class="container mb-20 flex flex-wrap gap-y-36">
+    {accessories.map((a, i) => <SwagItem product={a} reverse={i % 2 === 0} />)}
+  </div>
+</Layout>
