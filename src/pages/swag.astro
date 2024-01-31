@@ -13,6 +13,11 @@ import SwagItem from "../components/SwagItem.astro";
     Swag
   </h1>
   <div class="container mb-20 flex flex-wrap gap-y-36">
-    {accessories.map((a, i) => <SwagItem product={a} reverse={i % 2 === 0} />)}
+    {
+      accessories?.length > 0 &&
+        accessories.map((a, i) => (
+          <SwagItem product={a} reverse={i % 2 === 0} />
+        ))
+    }
   </div>
 </Layout>

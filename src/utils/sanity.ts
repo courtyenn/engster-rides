@@ -104,6 +104,7 @@ export async function getAccessories(): Promise<Accessory[]> {
       weight,
       inStock,
       images[] {
+        alt,
         asset->
       }
     }`,

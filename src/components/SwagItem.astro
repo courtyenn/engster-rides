@@ -1,16 +1,21 @@
 ---
+import { Picture } from "astro-imagetools/components";
 const { product, reverse } = Astro.props;
 const id = product.name.replace(/\s/g, "-").toLowerCase();
 const reverseClass = reverse ? "flex-row-reverse" : "";
 ---
 
 <div class={"flex md:flex-nowrap flex-wrap gap-6 " + reverseClass}>
-  <img
-    class="w-full md:w-1/2"
-    src={product.images[0].asset.url}
-    alt={product.images[0].alt}
-  />
-  <!-- <Picture alt={product.images[0].asset.alt} src={product.images[0].asset.url}/> -->
+  <div class="w-full md:w-1/2">
+    <Picture
+      alt={product.images[0].alt}
+      src={product.images[0].asset.url}
+      objectFit="contain"
+      attributes={{
+        img: { class: "max-h-[500px]" },
+      }}
+    />
+  </div>
   <div class="w-full md:w-1/2">
     <h2 class="text-2xl font-semibold">{product.name}</h2>
     <dl class="flex flex-col gap-4">
