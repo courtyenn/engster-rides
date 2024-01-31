@@ -75,7 +75,7 @@ const handleAddButton = (e: Event) => {
   e.stopPropagation();
   window.Snipcart.api.cart.items.add({
     id: props.product.slug.current,
-    price: props.product.price,
+    price: props.product.discountPrice || props.product.price,
     description: props.product.excerpt,
     name: props.product.name,
     image: currentVariant.value.images[0].asset.url,
@@ -161,7 +161,7 @@ const handleAddButton = (e: Event) => {
       class="snipcart-add-item w-full rounded-full bg-accent px-4 py-2 font-bold text-white hover:opacity-80 lg:w-6/12"
       @click="handleAddButton"
       :data-item-id="product.slug.current"
-      :data-item-price="product.price"
+      :data-item-price="product.discountPrice || product.price"
       :data-item-description="product.excerpt"
       :data-item-name="product.name"
       data-item-custom1-name="size"
