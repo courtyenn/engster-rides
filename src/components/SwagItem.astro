@@ -1,5 +1,6 @@
 ---
 import { Picture } from "astro-imagetools/components";
+import Carousel from "./Carousel.astro";
 const { product, reverse } = Astro.props;
 const id = product.name.replace(/\s/g, "-").toLowerCase();
 const reverseClass = reverse ? "flex-row-reverse" : "";
@@ -7,14 +8,19 @@ const reverseClass = reverse ? "flex-row-reverse" : "";
 
 <div class={"flex md:flex-nowrap flex-wrap gap-6 " + reverseClass}>
   <div class="w-full md:w-1/2">
-    <Picture
-      alt={product.images[0].alt}
-      src={product.images[0].asset.url}
-      objectFit="contain"
-      attributes={{
-        img: { class: "max-h-[500px]" },
-      }}
-    />
+    {product.images.length > 1 && <Carousel images={product.images} />}
+    {
+      product.images.length === 1 && (
+        <Picture
+          alt={product.images[0].alt}
+          src={product.images[0].asset.url}
+          objectFit="contain"
+          attributes={{
+            img: { class: "max-h-[500px]" },
+          }}
+        />
+      )
+    }
   </div>
   <div class="w-full md:w-1/2">
     <h2 class="text-2xl font-semibold">{product.name}</h2>

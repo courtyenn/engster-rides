@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import "vue3-carousel/dist/carousel.css";
 import type { Shirt, ShirtVariant } from "../../utils/sanity";
 import { ref, computed } from "vue";
 import ColorOptions, { type ColorOption } from "./ColorOptions.vue";

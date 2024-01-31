@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import "vue3-carousel/dist/carousel.css";
 import { Carousel, Slide, Pagination, Navigation } from "vue3-carousel";
 import type { DumbImageAssetWrapper } from "../../utils/sanity";
 const props = defineProps<{
@@ -33,7 +34,7 @@ const props = defineProps<{
           />
           <img
             :src="`${image.asset.url}?w=384&h=486&dpr=3&sharp=30`"
-            alt="Picture of shirt"
+            :alt="`${image.alt}`"
           />
         </picture>
       </div>
