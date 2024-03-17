@@ -157,27 +157,11 @@ const handleAddButton = (e: Event) => {
       </dd>
     </dl>
 
-    <button
-      class="snipcart-add-item w-full rounded-full bg-accent px-4 py-2 font-bold text-white hover:opacity-80 lg:w-6/12"
-      @click="handleAddButton"
-      :data-item-id="product.slug.current"
-      :data-item-price="product.discountPrice || product.price"
-      :data-item-description="product.excerpt"
-      :data-item-name="product.name"
-      data-item-custom1-name="size"
-      :data-item-custom1-options="currentSizeList.join('|')"
-      :data-item-custom1-value="currentVariant.size"
-      data-item-custom2-name="color"
-      :data-item-custom2-options="colorOptions.map((o) => o.label).join('|')"
-      :data-item-custom2-value="currentVariant.color.colorName"
-      data-item-custom3-name="TaxJarCategory"
-      data-item-custom3-value="20010"
-      data-item-quantity="1"
-      :data-item-url="`/shirt/${product.slug.current}`"
-      data-item-categories="shirt"
+    <a href="https://www.etsy.com/shop/EngstaRides"
+      class="w-full rounded-full bg-accent px-4 py-2 font-bold text-white hover:opacity-80 lg:w-6/12 text-center uppercase"
     >
       Add to cart
-    </button>
+  </a>
   </div>
   <div class="col-start-1 row-span-full row-start-1 w-5/6 md:w-96">
     <ProductCarousel :images="currentVariant.images" />
