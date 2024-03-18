@@ -69,41 +69,6 @@ const handleSizeSelect = (option: string) => {
     currentVariantIdx.value = initialIndex;
   }
 };
-
-const handleAddButton = (e: Event) => {
-  e.preventDefault();
-  e.stopPropagation();
-  window.Snipcart.api.cart.items.add({
-    id: props.product.slug.current,
-    price: props.product.discountPrice || props.product.price,
-    description: props.product.excerpt,
-    name: props.product.name,
-    image: currentVariant.value.images[0].asset.url,
-    customFields: [
-      {
-        type: "dropdown",
-        required: false,
-        name: "size",
-        options: currentSizeList.join("|"),
-        value: currentVariant.value.size,
-      },
-      {
-        type: "dropdown",
-        required: false,
-        name: "color",
-        options: colorOptions.value.map((o) => o.label).join("|"),
-        value: currentVariant.value.color.colorName,
-      },
-    ],
-    quantity: 1,
-    url: `/shirt/${props.product.slug.current}`,
-    categories: ["shirt"],
-    weight: 155,
-    shippable: true,
-    stackable: true,
-    taxable: true,
-  });
-};
 </script>
 
 <template>
