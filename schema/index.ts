@@ -3,6 +3,7 @@ import shirtColor from "./shirtColor";
 import shirtVariant from "./shirtVariant";
 import shirt from "./shirt";
 import accessory from "./accessory";
+import auction from "./auction";
 
 export const schemaTypes = [
   blockContent,
@@ -10,4 +11,5 @@ export const schemaTypes = [
   shirtVariant,
   shirt,
   accessory,
+  auction,
 ];

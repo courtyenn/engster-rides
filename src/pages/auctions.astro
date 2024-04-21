@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getAuctions } from "../utils/sanity";
+const auctions = await getAuctions();
+import AuctionItem from "../components/AuctionItem.astro";
+---
+
+<Layout
+  title="Engsta Rides | Auctions - Make your bid on car parts or car stuff"
+  description="Bid for the best car-related gear, goods, and accessories. All in one place at Engsta Rides."
+>
+  <section class="container box-border pb-5 pt-14 lg:pl-60 lg:pr-60">
+    <h1 class="text-bold mx-auto mb-4 mt-20 px-4 text-center text-5xl md:px-16">
+      Auctions
+    </h1>
+    <h2 class="text-bold mx-auto mb-24 px-4 text-center text-xl md:px-16">
+      One-time flash sales and deals.<br /> Pay to have it shipped, or pick-up
+      in Ponca City, Oklahoma.
+    </h2>
+    <div class="container mb-20 flex flex-wrap gap-y-20">
+      {
+        auctions?.length > 0 &&
+          auctions.map((a, i) => <AuctionItem product={a} reverse={true} />)
+      }
+    </div>
+  </section>
+</Layout>

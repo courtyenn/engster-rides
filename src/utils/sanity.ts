@@ -3,6 +3,57 @@ import type { PortableTextBlock } from "@portabletext/types";
 import type { ImageAsset, Slug } from "@sanity/types";
 import groq from "groq";
 
+interface BaseSanity {
+  _type: string;
+  _createdAt: string;
+}
+
+interface BaseProduct extends BaseSanity {
+  name: string;
+  slug: Slug;
+  excerpt: string;
+  description: PortableTextBlock[];
+  price: number;
+  checkoutUrl: string;
+}
+
+export interface Shirt extends BaseProduct {
+  _type: "shirt";
+  variants: ShirtVariant[];
+  discountPrice: number;
+}
+
+export interface ShirtColor extends BaseSanity {
+  _type: "shirtColor";
+  colorName: string;
+  color: {
+    hex: string;
+  };
+}
+
+export interface ShirtVariant extends BaseSanity {
+  _type: "shirtVariant";
+  name: string;
+  sku: string;
+  size: string;
+  fit: string;
+  color: ShirtColor;
+  images: DumbImageAssetWrapper[];
+}
+
+export interface Accessory extends BaseProduct {
+  _type: "accessory";
+  images: DumbImageAssetWrapper[];
+}
+
+export interface Auction extends BaseProduct {
+  _type: "auction";
+  images: DumbImageAssetWrapper[];
+}
+export interface DumbImageAssetWrapper {
+  asset: ImageAsset;
+}
+
 export async function getShirts(): Promise<Shirt[]> {
   return await useSanityClient().fetch(
     groq`*[_type == "shirt" && defined(slug.current) && inStock == true]{
@@ -51,51 +102,6 @@ export async function getShirt(slug: string): Promise<Shirt> {
     }`,
   );
 }
-export interface ShirtColor {
-  _type: "shirtColor";
-  _createdAt: string;
-  colorName: string;
-  color: {
-    hex: string;
-  };
-}
-
-export interface DumbImageAssetWrapper {
-  asset: ImageAsset;
-}
-export interface ShirtVariant {
-  _type: "shirtVariant";
-  _createdAt: string;
-  name: string;
-  sku: string;
-  size: string;
-  fit: string;
-  color: ShirtColor;
-  images: DumbImageAssetWrapper[];
-}
-export interface Shirt {
-  _type: "shirt";
-  _createdAt: string;
-  name: string;
-  slug: Slug;
-  excerpt: string;
-  description: PortableTextBlock[];
-  price: number;
-  variants: ShirtVariant[];
-  discountPrice: number;
-  checkoutUrl: string;
-}
-
-export interface Accessory {
-  _type: "accessory";
-  name: string;
-  slug: Slug;
-  excerpt: string;
-  images: DumbImageAssetWrapper[];
-  description: PortableTextBlock[];
-  price: number;
-  checkoutUrl: string;
-}
 
 export async function getAccessories(): Promise<Accessory[]> {
   return await useSanityClient().fetch(
@@ -107,6 +113,25 @@ export async function getAccessories(): Promise<Accessory[]> {
       price,
       weight,
       inStock,
+      checkoutUrl,
+      images[] {
+        alt,
+        asset->
+      }
+    }`,
+  );
+}
+
+export async function getAuctions(): Promise<Auction[]> {
+  return await useSanityClient().fetch(
+    groq`*[_type == "auction"]{
+      name,
+      excerpt,
+      description,
+      discountPrice,
+      price,
+      weight,
+      hasSold,
       checkoutUrl,
       images[] {
         alt,
