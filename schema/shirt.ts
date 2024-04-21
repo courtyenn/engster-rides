@@ -60,12 +60,6 @@ export default defineType({
       type: "blockContent",
       validation: (Rule) => Rule.required(),
     }),
-    defineField({
-      name: "checkoutUrl",
-      title: "Checkout URL",
-      type: "url",
-      validation: (Rule) => Rule.required(),
-    }),
   ],
   preview: {
     select: {
