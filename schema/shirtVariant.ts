@@ -19,6 +19,12 @@ export default defineType({
       validation: (Rule) => Rule.required(),
     }),
     defineField({
+      name: "checkoutUrl",
+      title: "Checkout URL",
+      type: "url",
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: "size",
       title: "Size",
       type: "string",

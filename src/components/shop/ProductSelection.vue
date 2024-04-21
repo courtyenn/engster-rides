@@ -122,7 +122,7 @@ const handleSizeSelect = (option: string) => {
       </dd>
     </dl>
 
-    <a :href="`${product.checkoutUrl || 'https://www.etsy.com/shop/EngstaRides'}`"
+    <a :href="`${currentVariant.checkoutUrl || 'https://www.etsy.com/shop/EngstaRides'}`"
       class="w-full rounded-full bg-accent px-4 py-2 font-bold text-white hover:opacity-80 lg:w-6/12 text-center uppercase"
     >
       Add to cart

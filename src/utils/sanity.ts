@@ -14,7 +14,6 @@ interface BaseProduct extends BaseSanity {
   excerpt: string;
   description: PortableTextBlock[];
   price: number;
-  checkoutUrl: string;
 }
 
 export interface Shirt extends BaseProduct {
@@ -35,6 +34,7 @@ export interface ShirtVariant extends BaseSanity {
   _type: "shirtVariant";
   name: string;
   sku: string;
+  checkoutUrl: string;
   size: string;
   fit: string;
   color: ShirtColor;
@@ -44,11 +44,13 @@ export interface ShirtVariant extends BaseSanity {
 export interface Accessory extends BaseProduct {
   _type: "accessory";
   images: DumbImageAssetWrapper[];
+  checkoutUrl: string;
 }
 
 export interface Auction extends BaseProduct {
   _type: "auction";
   images: DumbImageAssetWrapper[];
+  checkoutUrl: string;
 }
 export interface DumbImageAssetWrapper {
   asset: ImageAsset;
@@ -63,10 +65,10 @@ export async function getShirts(): Promise<Shirt[]> {
       description,
       discountPrice,
       price,
-      checkoutUrl,
       variants[]-> {
         name,
         sku,
+        checkoutUrl,
         size,
         fit,
         color->,
@@ -88,10 +90,10 @@ export async function getShirt(slug: string): Promise<Shirt> {
       description,
       discountPrice,
       price,
-      checkoutUrl,
       variants[]-> {
         name,
         sku,
+        checkoutUrl,
         size,
         fit,
         color->,
