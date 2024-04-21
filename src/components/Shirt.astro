@@ -1,7 +1,6 @@
 ---
 import type { Shirt } from "../utils/sanity";
 import Intersecting from "./common/Intersecting.vue";
-import { Picture } from "astro-imagetools/components";
 import DiscountPrice from "./DiscountPrice.astro";
 
 interface Props {
@@ -64,7 +63,7 @@ const image = variant.images[0].asset;
     <a
       href={`/shirt/${slug.current}`}
       class="w-80 rounded-full bg-accent px-4 py-2 text-center text-lg font-bold text-white hover:opacity-80 lg:w-6/12"
-      rel="prefetch">Buy now</a
+      rel="prefetch">VIEW SHIRT</a
     >
   </Intersecting>
 </li>

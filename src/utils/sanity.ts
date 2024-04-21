@@ -12,6 +12,7 @@ export async function getShirts(): Promise<Shirt[]> {
       description,
       discountPrice,
       price,
+      checkoutUrl,
       variants[]-> {
         name,
         sku,
@@ -36,6 +37,7 @@ export async function getShirt(slug: string): Promise<Shirt> {
       description,
       discountPrice,
       price,
+      checkoutUrl,
       variants[]-> {
         name,
         sku,
@@ -81,6 +83,7 @@ export interface Shirt {
   price: number;
   variants: ShirtVariant[];
   discountPrice: number;
+  checkoutUrl: string;
 }
 
 export interface Accessory {
@@ -91,6 +94,7 @@ export interface Accessory {
   images: DumbImageAssetWrapper[];
   description: PortableTextBlock[];
   price: number;
+  checkoutUrl: string;
 }
 
 export async function getAccessories(): Promise<Accessory[]> {
@@ -103,6 +107,7 @@ export async function getAccessories(): Promise<Accessory[]> {
       price,
       weight,
       inStock,
+      checkoutUrl,
       images[] {
         alt,
         asset->

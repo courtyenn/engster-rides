@@ -2,7 +2,6 @@
 import { Picture } from "astro-imagetools/components";
 import Carousel from "./Carousel.astro";
 const { product, reverse } = Astro.props;
-const id = product.name.replace(/\s/g, "-").toLowerCase();
 const reverseClass = reverse ? "flex-row-reverse" : "";
 ---
 
@@ -48,7 +47,7 @@ const reverseClass = reverse ? "flex-row-reverse" : "";
       <dd>{product.description}</dd>
     </dl>
     <a
-      href="https://www.etsy.com/shop/EngstaRides"
+      href={product.checkoutUrl || "https://www.etsy.com/shop/EngstaRides"}
       class="mt-10 block w-full rounded-full bg-accent px-4 py-2 text-center font-bold uppercase text-white hover:opacity-80 lg:w-6/12"
     >
       Add to cart

@@ -38,6 +38,7 @@ export default defineType({
         source: "name",
         maxLength: 96,
       },
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "variants",
@@ -50,12 +51,20 @@ export default defineType({
       title: "Short description",
       description: "Describe the shirt in a few words",
       type: "string",
+      validation: (Rule) => Rule.required(),
     }),
     defineField({
       name: "description",
       title: "Description",
       description: "Long description of the shirt, with markdown support",
       type: "blockContent",
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
+      name: "checkoutUrl",
+      title: "Checkout URL",
+      type: "url",
+      validation: (Rule) => Rule.required(),
     }),
   ],
   preview: {

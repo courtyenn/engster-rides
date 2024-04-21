@@ -4,7 +4,7 @@ import { ref, computed } from "vue";
 import ColorOptions, { type ColorOption } from "./ColorOptions.vue";
 import ProductCarousel from "./ProductCarousel.vue";
 import PortableText from "../common/PortableText.vue";
-import SizeOptions, { type SizeOption } from "./SizeOptions.vue";
+import SizeOptions from "./SizeOptions.vue";
 
 const props = defineProps<{ product: Shirt }>();
 const currentVariantIdx = ref(0);
@@ -122,7 +122,7 @@ const handleSizeSelect = (option: string) => {
       </dd>
     </dl>
 
-    <a href="https://www.etsy.com/shop/EngstaRides"
+    <a :href="`${product.checkoutUrl || 'https://www.etsy.com/shop/EngstaRides'}`"
       class="w-full rounded-full bg-accent px-4 py-2 font-bold text-white hover:opacity-80 lg:w-6/12 text-center uppercase"
     >
       Add to cart

@@ -10,6 +10,7 @@ import {
   CoTiktok,
   RiFacebookFill,
   RiLoader5Fill,
+  LaEtsy,
 } from "oh-vue-icons/icons";
 
 addIcons(
@@ -22,6 +23,7 @@ addIcons(
   CoTiktok,
   RiFacebookFill,
   RiLoader5Fill,
+  LaEtsy,
 );
 export default (app: App) => {
   app.component("v-icon", OhVueIcon);
