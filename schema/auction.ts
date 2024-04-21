@@ -24,24 +24,10 @@ export default defineType({
       initialValue: false,
     }),
     defineField({
-      name: "weight",
-      title: "Shipping Weight",
-      description: "Weight in grams",
-      type: "number",
-      initialValue: 0.0,
-    }),
-    defineField({
       name: "excerpt",
       title: "Short description",
       description:
         "To appear in SEO search results. Keep it short and use keywords.",
-      type: "string",
-      validation: (Rule) => Rule.required(),
-    }),
-    defineField({
-      name: "description",
-      title: "Description",
-      description: "Describe the product. Use for product page.",
       type: "string",
       validation: (Rule) => Rule.required(),
     }),

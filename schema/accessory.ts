@@ -35,6 +35,7 @@ export default defineType({
       description: "Weight in grams",
       type: "number",
       initialValue: 0.0,
+      hidden: true,
     }),
     defineField({
       name: "excerpt",
@@ -42,6 +43,7 @@ export default defineType({
       description:
         "To appear in SEO search results. Keep it short and use keywords.",
       type: "string",
+      hidden: true,
     }),
     defineField({
       name: "description",
