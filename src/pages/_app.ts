@@ -11,6 +11,7 @@ import {
   RiFacebookFill,
   RiLoader5Fill,
   LaEtsy,
+  LaAirbnb,
 } from "oh-vue-icons/icons";
 
 addIcons(
@@ -24,6 +25,7 @@ addIcons(
   RiFacebookFill,
   RiLoader5Fill,
   LaEtsy,
+  LaAirbnb,
 );
 export default (app: App) => {
   app.component("v-icon", OhVueIcon);

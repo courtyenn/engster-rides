@@ -2,6 +2,7 @@
 import Welcome from "../components/Welcome.astro";
 import Shirts from "../components/Shirts.astro";
 import Layout from "../layouts/Layout.astro";
+import Icon from "../components/common/Icon.vue";
 import { getShirts } from "../utils/sanity";
 import { BackgroundImage, Picture } from "astro-imagetools/components";
 const shirts = await getShirts();
@@ -22,16 +23,24 @@ const shirts = await getShirts();
     <div
       class="flex h-full flex-col items-center justify-center pl-10 pr-10 md:gap-y-10 lg:pl-14 lg:pr-14"
     >
+      <Picture
+        src={"/src/assets/logo/engsta_logo.png"}
+        layout="fixed"
+        alt="Engsta Rides Logo"
+        format="png"
+        breakpoints={[130, 200, 400]}
+        sizes={`(max-width: 360px) 130px, (max-width: 720px) 200px, 400px`}
+      />
       <!-- <h1
         class="text-shadow text-lg uppercase tracking-wider text-light md:text-5xl text-graffiti"
       >
         Engsta Rides
       </h1> -->
-      <!-- <h1
-        class="text-shadow text-graffiti text-center text-6xl font-bold uppercase leading-tight tracking-wide text-light md:text-7xl lg:text-8xl"
+      <h1
+        class="text-shadow text-graffiti text-center text-3xl font-bold uppercase leading-tight tracking-wide text-light md:text-5xl lg:text-6xl"
       >
         Engsta Rides
-      </h1> -->
+      </h1>
     </div>
   </BackgroundImage>
   <main
@@ -69,6 +78,23 @@ const shirts = await getShirts();
         objectFit="contain"
       />
     </div>
+  </section>
+  <section
+    class="container box-border flex flex-col items-center gap-y-4 pb-32 pt-14"
+  >
+    <i class="block text-center text-[#fa375a]"
+      ><Icon
+        name="la-airbnb"
+        scale="5"
+        label="Engsta Rides Official Airbnb"
+      /></i
+    >
+    <h1 class="text-center font-accent text-4xl">AirBnB - Odin's Kingdom</h1>
+    <a
+      href="https://www.airbnb.com/rooms/1115942653367422106"
+      class="w-80 rounded-full bg-accent px-4 py-2 text-center text-lg font-bold text-white hover:opacity-80 lg:w-6/12"
+      >VIEW AIRBNB</a
+    >
   </section>
   <script is:inline>
     document.addEventListener("astro:page-load", function () {
