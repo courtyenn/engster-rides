@@ -74,3 +74,11 @@
   background-repeat: repeat;
   background-color: #333333;
 }
+
+.pageHeader {
+  @apply text-graffiti mx-auto mb-24 mt-20 px-4 text-center text-6xl md:px-16;
+}
+
+.carButton {
+  @apply bg-accent text-dark text-lg font-bold py-2 px-4 rounded-full;
+}
