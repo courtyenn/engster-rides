@@ -18,7 +18,7 @@ import AuctionItem from "../components/AuctionItem.astro";
     <div class="container mb-20 flex flex-wrap gap-y-20">
       {
         auctions?.length > 0 &&
-          auctions.map((a, i) => <AuctionItem product={a} reverse={true} />)
+          auctions.map((a) => <AuctionItem product={a} reverse={true} />)
       }
     </div>
   </section>
