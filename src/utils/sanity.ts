@@ -1,8 +1,7 @@
-import { useSanityClient } from "@sanity/astro";
 import type { PortableTextBlock } from "@portabletext/types";
 import type { ImageAsset, Slug } from "@sanity/types";
 import groq from "groq";
-
+import { sanityClient } from "sanity:client";
 interface BaseSanity {
   _type: string;
   _createdAt: string;
@@ -57,7 +56,7 @@ export interface DumbImageAssetWrapper {
 }
 
 export async function getShirts(): Promise<Shirt[]> {
-  return await useSanityClient().fetch(
+  return await sanityClient.fetch(
     groq`*[_type == "shirt" && defined(slug.current) && inStock == true]{
       slug,
       name,
@@ -81,7 +80,7 @@ export async function getShirts(): Promise<Shirt[]> {
 }
 
 export async function getShirt(slug: string): Promise<Shirt> {
-  return await useSanityClient().fetch(
+  return await sanityClient.fetch(
     groq`*[_type == "shirt" && slug.current == "${slug}"][0]
     {
       slug,
@@ -106,7 +105,7 @@ export async function getShirt(slug: string): Promise<Shirt> {
 }
 
 export async function getAccessories(): Promise<Accessory[]> {
-  return await useSanityClient().fetch(
+  return await sanityClient.fetch(
     groq`*[_type == "accessory" && inStock == true]{
       name,
       excerpt,
@@ -125,7 +124,7 @@ export async function getAccessories(): Promise<Accessory[]> {
 }
 
 export async function getAuctions(): Promise<Auction[]> {
-  return await useSanityClient().fetch(
+  return await sanityClient.fetch(
     groq`*[_type == "auction"]{
       name,
       excerpt,

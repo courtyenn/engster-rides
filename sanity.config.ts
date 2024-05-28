@@ -18,7 +18,8 @@ if (!projectId || !dataset) {
 }
 
 import { defineConfig } from "sanity";
-import { deskTool } from "sanity/desk";
+import { structureTool } from "sanity/structure";
+// import { deskTool } from "sanity/desk";
 import { visionTool } from "@sanity/vision";
 import { schemaTypes } from "./schema";
 import { colorInput } from "@sanity/color-input";
@@ -30,7 +31,7 @@ export default defineConfig({
   title: "Engsta Rides",
   projectId,
   dataset,
-  plugins: [deskTool({ structure }), visionTool(), colorInput()],
+  plugins: [structureTool({ structure }), visionTool(), colorInput()],
   document: {
     actions: MyCustomActions,
   },
