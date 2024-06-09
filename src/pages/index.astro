@@ -21,7 +21,7 @@ const shirts = await getShirts();
     backgroundPosition="50% 60%"
   >
     <div
-      class="box-border flex h-full flex-col items-center justify-center px-10 gap-y-10 lg:px-14"
+      class="box-border flex h-full flex-col items-center justify-center gap-y-10 px-10 lg:px-14"
     >
       <!-- <Picture
         src={"/src/assets/logo/engsta_logo.png"}
@@ -40,18 +40,18 @@ const shirts = await getShirts();
         class="text-shadow text-graffiti text-center text-5xl font-bold uppercase tracking-widest text-light lg:text-6xl"
       >
         <!-- Engsta Rides -->
-        New Products
+         New Products
       </h1>
       <div class="h-3/4">
-      <Picture
-      layout="fill"
-        src={"/src/assets/pics/engsta_soon.png"}
-        alt="Coming soon.. new products"
-        format="png"
-        breakpoints={[230, 720, 1220]}
-        width="600px"
-      />
-    </div>
+        <Picture
+          layout="fill"
+          src={"/src/assets/pics/engsta_soon.png"}
+          alt="Coming soon.. new products"
+          format="png"
+          breakpoints={[230, 720, 1220]}
+          width="600px"
+        />
+      </div>
     </div>
   </BackgroundImage>
   <main
@@ -79,9 +79,11 @@ const shirts = await getShirts();
     />
   </section> -->
   <section
-    class="container box-border flex flex-col items-center gap-y-4 pb-32 pt-14"
+    class="box-border flex flex-col items-center gap-y-4 bg-gray-600 py-20 text-accent"
   >
-  <h1 class="text-center font-accent text-graffiti text-6xl mb-9">Odin's Kingdom</h1>
+    <h1 class="text-graffiti mb-9 text-center font-accent text-6xl">
+      Odin's Kingdom
+    </h1>
     <i class="block text-center text-[#fa375a]"
       ><Icon
         name="la-airbnb"
@@ -89,28 +91,30 @@ const shirts = await getShirts();
         label="Engsta Rides Official Airbnb"
       /></i
     >
-    <h2 class="text-center font-accent text-4xl">AirBnB - Odin's Kingdom, Oklahoma</h2>
+    <h2 class="text-center font-accent text-4xl">
+      AirBnB - Odin's Kingdom, Oklahoma
+    </h2>
     <a
       href="https://www.airbnb.com/rooms/1115942653367422106"
-      class="w-80 rounded-full bg-accent px-4 py-2 text-center text-lg font-bold text-white hover:opacity-80 lg:w-6/12"
+      class="mt-12 w-80 rounded-full bg-accent px-4 py-2 text-center text-lg font-bold text-white hover:opacity-80 lg:w-1/4"
       >VIEW AIRBNB</a
     >
   </section>
-  <section class="grated-bg mt-6 pb-14 pt-14">
+  <section class="grated-bg py-14">
     <div
-      class="mb-4 ml-auto mr-auto flex w-full max-w-lg flex-col gap-y-6 rounded text-white px-8 pb-8 pt-6 text-center shadow-md"
+      class="mb-4 ml-auto mr-auto flex w-full max-w-lg flex-col gap-y-6 rounded px-8 pb-8 pt-6 text-center text-white shadow-md"
     >
-    <Picture
-      src="/src/assets/pics/palooza_2023_big.png"
-      alt="PCA Palooza"
-      attributes={{
-        img: {
-          class: "ml-auto mr-auto max-h-80",
-        },
-      }}
-      layout="fill"
-      objectFit="contain"
-    />
+      <Picture
+        src="/src/assets/pics/palooza_2023_big.png"
+        alt="PCA Palooza"
+        attributes={{
+          img: {
+            class: "ml-auto mr-auto max-h-80",
+          },
+        }}
+        layout="fill"
+        objectFit="contain"
+      />
       <p class="mb-5 text-center font-accent text-xl">
         It was great seeing everyone.
       </p>
