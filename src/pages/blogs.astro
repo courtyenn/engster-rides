@@ -1,0 +1,18 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getBlogs } from "../utils/sanity";
+import Blog from "../components/Blog.astro";
+const blogs = await getBlogs();
+---
+
+<Layout
+  title="Engsta Rides | Blog - Get latest news, updates, and tips."
+  description="News for the best car-related gear, goods, and accessories. All in one place at Engsta Rides."
+>
+  <section class="container box-border pb-5 pt-14 lg:pl-60 lg:pr-60">
+    <h1 class="pageHeader">Engsta Rides Blog</h1>
+    <div class="container mb-20 flex flex-wrap gap-y-20">
+      {blogs.map((blog) => <Blog blog={blog} />)}
+    </div>
+  </section>
+</Layout>

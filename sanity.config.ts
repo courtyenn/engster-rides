@@ -25,13 +25,14 @@ import { schemaTypes } from "./schema";
 import { colorInput } from "@sanity/color-input";
 import { MyCustomActions } from "./documentActions/pageAction";
 import { structure } from "./src/structure";
+import { markdownSchema } from "sanity-plugin-markdown";
 
 export default defineConfig({
   name: "engsta-rides",
   title: "Engsta Rides",
   projectId,
   dataset,
-  plugins: [structureTool({ structure }), visionTool(), colorInput()],
+  plugins: [structureTool({ structure }), visionTool(), colorInput(), markdownSchema()],
   document: {
     actions: MyCustomActions,
   },

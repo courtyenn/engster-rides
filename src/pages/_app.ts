@@ -1,3 +1,4 @@
+import 'easymde/dist/easymde.min.css'
 import type { App } from "vue";
 import { OhVueIcon, addIcons } from "oh-vue-icons";
 import {

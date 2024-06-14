@@ -141,3 +141,38 @@ export async function getAuctions(): Promise<Auction[]> {
     }`,
   );
 }
+
+export type Blog = {
+  title: string;
+  slug: Slug;
+  content: string;
+  image: DumbImageAssetWrapper;
+};
+export async function getBlogs(): Promise<Blog[]>{
+  return await sanityClient.fetch(
+    groq`*[_type == "blog"]{
+      title,
+      slug,
+      content,
+      image {
+        alt,
+        asset->
+      }
+    }`,
+  );
+}
+
+export async function getBlog(slug: string): Promise<Blog>{
+  return await sanityClient.fetch(
+    groq`*[_type == "blog"][0]{
+      title,
+      slug,
+      content,
+      image {
+        alt,
+        asset->
+      }
+    }`
+  );
+}
+//
