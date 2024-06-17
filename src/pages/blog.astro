@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { getBlogs } from "../utils/sanity";
-import Blog from "../components/Blog.astro";
+import { default as BlogItem } from "../components/Blog.astro";
 const blogs = await getBlogs();
 ---
 
@@ -12,7 +12,7 @@ const blogs = await getBlogs();
   <section class="container box-border pb-5 pt-14 lg:pl-60 lg:pr-60">
     <h1 class="pageHeader">Engsta Rides Blog</h1>
     <div class="container mb-20 flex flex-wrap gap-y-20">
-      {blogs.map((blog) => <Blog blog={blog} />)}
+      {blogs.map((blog) => <BlogItem blog={blog} />)}
     </div>
   </section>
 </Layout>

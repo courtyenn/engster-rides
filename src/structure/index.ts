@@ -1,3 +1,5 @@
+import { FaCar } from 'react-icons/fa'
+
 export const structure = (S: any) =>
   S.list()
     .title("Content")
@@ -16,3 +18,13 @@ export const structure = (S: any) =>
           !["shirtVariant", "shirtColor"].includes(listItem.getId()),
       ),
     ]);
+
+export const CustomStructure = () => ({
+  name: "shop",
+  title: "Shop",
+  icon: FaCar,
+  structure: (S: any) => S.documentTypeListItems().filter(
+      (listItem: any) =>
+        !["shirtVariant", "shirtColor"].includes(listItem.getId()),
+    )
+})
