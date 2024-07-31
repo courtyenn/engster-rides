@@ -88,11 +88,11 @@
 Would be nice to refactor pageHeader2 so it can optionaly include a subheader
 */
 .pageHeader {
-  @apply text-graffiti mx-auto mb-24 mt-20 px-4 text-center text-6xl md:px-16;
+  @apply text-dash mx-auto mb-24 mt-20 px-4 text-center text-6xl md:px-16;
 }
 
 .pageHeader2 {
-  @apply text-graffiti mx-auto mt-20 px-4 text-center text-6xl md:px-16;
+  @apply text-dash mx-auto mt-20 px-4 text-center text-6xl md:px-16;
 }
 
 .pageSubHeader {
