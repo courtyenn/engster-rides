@@ -4,24 +4,28 @@ import Shirts from "../components/Shirts.astro";
 import Layout from "../layouts/Layout.astro";
 import Icon from "../components/common/Icon.vue";
 import { getShirts } from "../utils/sanity";
-import { BackgroundImage, Picture } from "astro-imagetools/components";
+import { BackgroundPicture, Picture } from "astro-imagetools/components";
 const shirts = await getShirts();
+const openSky = "/src/assets/pics/open_sky.jpeg";
+const porches = "/src/assets/pics/porsches.jpg";
 ---
 
 <Layout title="Engsta Rides" description="Shirts that make you go vroom vroom">
-  <BackgroundImage
-    src="/src/assets/pics/open_sky.jpeg"
-    attributes={{
-      container: {
-        class:
-          "h-[30rem] md:h-[600px] xl:h-[800px] border-box pt-4 md:pt-8 md:pb-16",
+  <BackgroundPicture
+    src={openSky}
+    breakpoints={[0, 400, 600, 800]}
+    artDirectives={[
+      {
+        src: "/src/assets/pics/porsches.jpg",
+        media: "(min-width: 1024px)",
+        breakpoints: [1024, 1280, 1536],
       },
-    }}
+    ]}
     brightness={0.6}
     backgroundPosition="50% 60%"
   >
     <div
-      class="box-border flex h-full flex-col items-center justify-center gap-y-10 px-10 lg:px-14"
+      class="box-border flex h-[30rem] flex-col items-center justify-center gap-y-10 px-10 md:h-[450px] lg:px-14 xl:h-[500px]"
     >
       <!-- <Picture
         src={"/src/assets/logo/engsta_logo.png"}
@@ -37,13 +41,13 @@ const shirts = await getShirts();
         Engsta Rides
       </h1> -->
       <h1
-        class="text-shadow text-graffiti text-center text-5xl font-bold uppercase tracking-widest text-light lg:text-6xl"
+        class="text-shadow text-dash text-center text-5xl font-bold uppercase tracking-widest text-light lg:text-8xl"
       >
         <!-- Engsta Rides -->
-         New Products
+         WELCOME
       </h1>
     </div>
-  </BackgroundImage>
+  </BackgroundPicture>
   <main
     id="main__content"
     class="container box-border flex flex-col gap-16 pb-32 pt-14"

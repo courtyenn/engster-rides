@@ -9,10 +9,13 @@ const blogs = await getBlogs();
   title="Engsta Rides | Blog - Get latest news, updates, and tips."
   description="News for the best car-related gear, goods, and accessories. All in one place at Engsta Rides."
 >
-  <section class="container box-border pb-5 pt-14 lg:pl-60 lg:pr-60">
-    <h1 class="pageHeader">Engsta Rides Blog</h1>
-    <div class="container mb-20 flex flex-wrap gap-y-20">
-      {blogs.map((blog) => <BlogItem blog={blog} />)}
+  <section class="">
+    <div class="bg-slate-400 py-10">
+      <h1 class="pageHeader2">Engsta Rides Blog</h1>
+      <h2 class="pageSubHeader">Get the latest news, updates, and tips.</h2>
     </div>
+    <ul class="grid grid-cols-2 gap-4">
+      {blogs.map((blog) => <BlogItem blog={blog} />)}
+    </ul>
   </section>
 </Layout>

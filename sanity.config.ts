@@ -35,7 +35,7 @@ export default defineConfig({
   plugins: [
     structureTool({
       structure: (S, context) => {
-        console.log(context); // returns { currentUser, dataset, projectId, schema, getClient, documentStore }
+        //console.log(context); // returns { currentUser, dataset, projectId, schema, getClient, documentStore }
         return S.list()
           .title("Shop")
           .items([

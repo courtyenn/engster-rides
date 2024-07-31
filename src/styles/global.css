@@ -7,6 +7,11 @@
   src: url("/fontFamily/aAttackGraffiti.ttf");
 }
 
+@font-face {
+  font-family: "Dash-Horizon";
+  src: url("/fontFamily/Dash-Horizon-Demo.otf");
+}
+
 @layer base {
   :root {
     --color-primary: 75 38 143;
@@ -69,14 +74,29 @@
   font-family: "a Attack Graffiti", sans-serif;
 }
 
+.text-dash {
+  font-family: "Dash-Horizon", sans-serif;
+}
+
 .grated-bg {
   background-image: url("/bo-play.png");
   background-repeat: repeat;
   background-color: #333333;
 }
 
+/* 
+Would be nice to refactor pageHeader2 so it can optionaly include a subheader
+*/
 .pageHeader {
   @apply text-graffiti mx-auto mb-24 mt-20 px-4 text-center text-6xl md:px-16;
+}
+
+.pageHeader2 {
+  @apply text-graffiti mx-auto mt-20 px-4 text-center text-6xl md:px-16;
+}
+
+.pageSubHeader {
+  @apply text-slate-800 text-4xl text-center;
 }
 
 .carButton {
