@@ -13,12 +13,20 @@ const porches = "/src/assets/pics/porsches.jpg";
 <Layout title="Engsta Rides" description="Shirts that make you go vroom vroom">
   <BackgroundPicture
     src={openSky}
-    breakpoints={[0, 400, 600, 800]}
+    breakpoints={[400, 600, 800]}
+    format={["avif", "webp"]}
+    preload="avif"
+    fallbackFormat="jpg"
+    loading="eager"
     artDirectives={[
       {
         src: "/src/assets/pics/porsches.jpg",
         media: "(min-width: 1024px)",
         breakpoints: [1024, 1280, 1536],
+        format: ["avif", "webp"],
+        preload: "avif",
+        fallbackFormat: "jpg",
+        loading: "eager",
       },
     ]}
     brightness={0.6}

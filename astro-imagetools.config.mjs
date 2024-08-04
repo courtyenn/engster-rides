@@ -1,33 +1,17 @@
 import { defineConfig } from "astro-imagetools/config";
 
 export default defineConfig({
-  format: ["png"],
+  format: ["webp", "png"],
   placeholder: "blurred",
   formatOptions: {
-    jpeg: {
-      quality: 70,
-      chromaSubsampling: "4:4:4",
-      mozjpeg: true,
-      trellisQuantisation: true,
-      overshootDeringing: true,
-      optimiseScans: true,
+    jpg: {
+      quality: 80,
     },
     png: {
-      quality: 70,
-      adaptiveFiltering: true,
-      compressionLevel: 9,
-      palette: true,
+      quality: 80,
     },
     webp: {
       quality: 50,
-      effort: 6.0,
-    },
-    avif: {
-      chromaSubsampling: "4:4:4",
-      effort: 9.0,
-    },
-    gif: {
-      effort: 10.0,
     },
   },
 });

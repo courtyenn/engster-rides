@@ -25,23 +25,20 @@ const shirt = await getShirt(slug);
     <div
       id={`prod-${slug}`}
       data-slug={slug}
-      class="z-0 col-start-1 row-start-1 w-[384px] scale-50 justify-self-center transition-transform duration-500 md:pt-[8px]"
+      class="absolute z-0 col-start-1 row-start-1 w-[384px] transition-transform duration-500 md:pt-[8px]"
       transition:animate="slide"
       transition:name={`prod-${slug}`}
     >
       <Picture
-        attributes={{
-          picture: {
-            class: "",
-          },
-          img: {
-            class: "fade-in absolute w-20",
-          },
-        }}
         alt="A cool shirt"
         position="attention"
         src={shirt.variants[0].images[0].asset.url}
         layout="fullWidth"
+        fadeInTransition={{
+          delay: "0.5s",
+          duration: "0.5s",
+          timingFunction: "linear",
+        }}
       />
     </div>
     <ProductSelection product={shirt} client:load />
@@ -52,4 +49,10 @@ const shirt = await getShirt(slug);
       imgToHide?.classList.add("hidden");
     }, 520);
   </script>
+  <style>
+    .carousel__item {
+      width: 384px;
+      height: 486px;
+    }
+  </style>
 </Layout>
