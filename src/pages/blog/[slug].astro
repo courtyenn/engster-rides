@@ -22,7 +22,7 @@ const blog = await getBlog(slug);
     class="container box-border grid h-full grid-cols-1 gap-10 pb-5 pt-14 sm:grid-cols-2"
   >
     <h1>{blog.title}</h1>
-    <div
+    <article
       id={`prod-${slug}`}
       data-slug={slug}
       class="z-0 col-start-1 row-start-1 w-[384px] scale-50 justify-self-center transition-transform duration-500 md:pt-[8px]"
@@ -45,6 +45,6 @@ const blog = await getBlog(slug);
       />
 
       {blog.content}
-    </div>
+    </article>
   </main>
 </Layout>
