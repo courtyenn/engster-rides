@@ -35,6 +35,18 @@
     --w-container: 55rem;
   }
 
+  .stop-scrolling {
+    height: 100%;
+    overflow: hidden;
+  }
+
+  a.link__body {
+    cursor: pointer;
+  }
+  a.link__body:hover {
+    text-decoration: underline;
+  }
+
   @media (prefers-color-scheme: dark) {
     :root {
       --color-primary: 135 94 212;
@@ -92,13 +104,13 @@ Would be nice to refactor pageHeader2 so it can optionaly include a subheader
 }
 
 .pageHeader2 {
-  @apply text-dash mx-auto mt-20 px-4 text-center text-6xl md:px-16;
+  @apply text-dash mx-auto mt-20 px-4 pb-8 pt-10 text-center text-6xl md:px-16;
 }
 
 .pageSubHeader {
-  @apply text-slate-800 text-4xl text-center;
+  @apply pb-28 text-center text-3xl text-gray-600;
 }
 
 .carButton {
-  @apply bg-accent text-dark text-lg font-bold py-2 px-4 rounded-full;
+  @apply rounded-full bg-accent px-4 py-2 text-lg font-bold text-dark;
 }

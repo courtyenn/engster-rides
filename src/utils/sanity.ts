@@ -50,6 +50,7 @@ export interface Auction extends BaseProduct {
   _type: "auction";
   images: DumbImageAssetWrapper[];
   checkoutUrl: string;
+  sold: boolean;
 }
 export interface DumbImageAssetWrapper {
   asset: ImageAsset;
@@ -126,14 +127,14 @@ export async function getAccessories(): Promise<Accessory[]> {
 
 export async function getAuctions(): Promise<Auction[]> {
   return await sanityClient.fetch(
-    groq`*[_type == "auction"]{
+    groq`*[_type == "auction"] | order(sold, _createdAt asc){
       name,
       excerpt,
       description,
       discountPrice,
       price,
       weight,
-      hasSold,
+      sold,
       checkoutUrl,
       images[] {
         alt,

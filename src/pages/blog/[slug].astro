@@ -19,10 +19,10 @@ const blog = await getBlog(slug)
 ---
 
 <Layout title={`Engsta Rides | ${blog.title}`} description={blog.summary}>
-  <nav>
-    <a href="/blog">Back</a>
-  </nav>
-  <main class="container box-border flex h-full flex-col gap-10 pb-5 pt-14">
+  <main class="container box-border flex h-full flex-col gap-10 pb-28 pt-14">
+    <nav>
+      <a class="link__body" href="/blog">Back</a>
+    </nav>
     <h1 class="text-4xl">{blog.title}</h1>
     <article
       id={`prod-${slug}`}
@@ -32,18 +32,11 @@ const blog = await getBlog(slug)
       transition:name={`prod-${slug}`}
     >
       <Picture
-        attributes={{
-          picture: {
-            class: "",
-          },
-          img: {
-            class: "fade-in absolute w-20",
-          },
-        }}
-        alt="A cool shirt"
-        position="attention"
-        src={`${blog.image.asset.url}?w=1000&h=500`}
+        alt={blog.image.alt}
+        src={`${blog.image.asset.url}`}
+        aspect={2}
         layout="fullWidth"
+        breakpoints={[200, 400, 800, 1024]}
       />
 
       {blog.content && <PortableText value={blog.content} />}

@@ -6,7 +6,7 @@
 </button>
 <ul
   id="mobileMenu"
-  class="gap-y-20 bg-bg1 py-2 text-center text-4xl"
+  class="gap-y-14 bg-bg1 py-2 text-center text-3xl"
   aria-labelledby="dropdownDefaultButton"
 >
   <li>
@@ -35,9 +35,11 @@
     if (menu.classList.contains("is-active")) {
       menu.classList.remove("is-active")
       button.setAttribute("aria-expanded", "false")
+      document.body.classList.remove("stop-scrolling")
     } else {
       menu.classList.add("is-active")
       button.setAttribute("aria-expanded", "true")
+      document.body.classList.add("stop-scrolling")
     }
   }
   document.addEventListener("astro:before-preparation", function () {

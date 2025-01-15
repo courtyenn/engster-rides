@@ -19,22 +19,21 @@ const image = img.asset
   >
     <a
       href={`/blog/${slug.current}`}
-      class="scale-80 flex-card group relative z-10 flex max-w-md flex-1 cursor-pointer flex-col items-center gap-y-2 text-center"
+      class="flex-card group relative z-10 flex flex-1 cursor-pointer flex-col items-center gap-y-2 text-center"
       rel="prefetch"
     >
       <h2 class="text-xl">{title}</h2>
-      <div class="w-80 shrink-0 grow-0 overflow-hidden">
-        <div
-          class="cursor-pointer transition-transform duration-500 group-hover:scale-100 group-hover:duration-[3s]"
-          transition:animate="slide"
-          transition:name={`prod-${slug.current}`}
-        >
-          <Picture
-            src={`${image.url}?w=300&h=300&dpr=2&sharp=50`}
-            alt={`${img.alt}`}
-            class="scale-80"
-          />
-        </div>
+      <div transition:animate="slide" transition:name={`prod-${slug.current}`}>
+        <Picture
+          src={`${image.url}?dpr=2&sharp=50`}
+          alt={`${img.alt}`}
+          aspect={1}
+          attributes={{
+            img: {
+              class: "max-h-[350px]",
+            },
+          }}
+        />
       </div>
     </a>
   </Intersecting>
