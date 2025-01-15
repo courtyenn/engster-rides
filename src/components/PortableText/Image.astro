@@ -9,5 +9,9 @@ const webpUrl = urlForImage(asset).format("webp").url()
 
 <picture class="mx-auto max-h-96">
   <source class="mx-auto max-h-96" srcset={webpUrl} type="image/webp" />
-  <img class="responsive__img mx-auto max-h-[500px]" src={url} alt={alt} />
+  {
+    url && alt && (
+      <img class="responsive__img mx-auto max-h-[500px]" src={url} alt={alt} />
+    )
+  }
 </picture>
