@@ -146,6 +146,7 @@ export async function getAuctions(): Promise<Auction[]> {
 export type Blog = {
   title: string;
   slug: Slug;
+  summary: string;
   content: PortableTextBlock[];
   image: DumbImageAssetWrapper;
 };

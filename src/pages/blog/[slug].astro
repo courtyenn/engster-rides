@@ -18,7 +18,7 @@ const { slug } = Astro.params as Params
 const blog = await getBlog(slug)
 ---
 
-<Layout title={`Engsta Rides | ${blog.title}`} description={blog.content}>
+<Layout title={`Engsta Rides | ${blog.title}`} description={blog.summary}>
   <nav>
     <a href="/blog">Back</a>
   </nav>

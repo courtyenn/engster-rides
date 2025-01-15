@@ -1,5 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 const plugin = require("tailwindcss/plugin");
+const daisyui = require("daisyui");
+
 module.exports = {
   content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
   theme: {
@@ -60,5 +62,6 @@ module.exports = {
         html: { fontSize: "16px" },
       });
     }),
+    daisyui,
   ],
 };
