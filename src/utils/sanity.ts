@@ -53,6 +53,7 @@ export interface Auction extends BaseProduct {
 }
 export interface DumbImageAssetWrapper {
   asset: ImageAsset;
+  alt: string;
 }
 
 export async function getShirts(): Promise<Shirt[]> {
@@ -145,7 +146,7 @@ export async function getAuctions(): Promise<Auction[]> {
 export type Blog = {
   title: string;
   slug: Slug;
-  content: string;
+  content: PortableTextBlock[];
   image: DumbImageAssetWrapper;
 };
 export async function getBlogs(): Promise<Blog[]> {

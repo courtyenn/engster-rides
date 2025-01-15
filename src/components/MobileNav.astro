@@ -19,6 +19,9 @@
     <a href="/auctions" class="block">Auctions</a>
   </li>
   <li>
+    <a href="/blog" class="block">Blog</a>
+  </li>
+  <li>
     <a href="/contact-us" class="block">Contact Us</a>
   </li>
   <li>
@@ -27,23 +30,23 @@
 </ul>
 <script is:inline>
   function listener() {
-    const button = document.querySelector("#menuToggle");
-    const menu = document.querySelector("#mobileMenu");
+    const button = document.querySelector("#menuToggle")
+    const menu = document.querySelector("#mobileMenu")
     if (menu.classList.contains("is-active")) {
-      menu.classList.remove("is-active");
-      button.setAttribute("aria-expanded", "false");
+      menu.classList.remove("is-active")
+      button.setAttribute("aria-expanded", "false")
     } else {
-      menu.classList.add("is-active");
-      button.setAttribute("aria-expanded", "true");
+      menu.classList.add("is-active")
+      button.setAttribute("aria-expanded", "true")
     }
   }
   document.addEventListener("astro:before-preparation", function () {
-    document.removeEventListener("astro:page-load", listener);
-  });
+    document.removeEventListener("astro:page-load", listener)
+  })
   document.addEventListener("astro:page-load", function () {
-    const button = document.querySelector("#menuToggle");
-    button.addEventListener("click", listener);
-  });
+    const button = document.querySelector("#menuToggle")
+    button.addEventListener("click", listener)
+  })
 </script>
 <style>
   #menuToggle {
