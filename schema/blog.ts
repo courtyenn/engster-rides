@@ -49,10 +49,11 @@ export default defineType({
     select: {
       title: "title",
       content: "summary",
+      image: "image",
     },
     prepare(selection) {
-      const { content } = selection;
-      return { ...selection, subtitle: content };
+      const { content, image } = selection;
+      return { ...selection, subtitle: content, media: image };
     },
   },
 });
