@@ -1,10 +1,10 @@
 ---
-import { PortableText as PT, Mark } from "astro-portabletext"
+import { PortableText as PT } from "astro-portabletext"
 import { mergeComponents } from "astro-portabletext/utils"
 import Block from "./Block.astro"
 import List from "./List.astro"
 import ListItem from "./ListItem.astro"
-// import Mark from "./Mark.astro"
+import Mark from "./Mark.astro"
 import Type from "./Type.astro"
 
 type PortableTextProps = Parameters<typeof PT>[0]
@@ -15,8 +15,8 @@ const defaultComponents = {
   block: Block,
   list: List,
   listItem: ListItem,
+  mark: Mark as any,
   type: Type,
-  mark: Mark,
 }
 
 const { value, components = {} } = Astro.props
