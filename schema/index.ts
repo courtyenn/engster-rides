@@ -1,4 +1,4 @@
-import blockContent from "./blockContent";
+import { blockContentType } from "./blockContent";
 import shirtColor from "./shirtColor";
 import shirtVariant from "./shirtVariant";
 import shirt from "./shirt";
@@ -7,7 +7,7 @@ import auction from "./auction";
 import blog from "./blog";
 
 export const schemaTypes = [
-  blockContent,
+  blockContentType,
   shirtColor,
   shirtVariant,
   shirt,

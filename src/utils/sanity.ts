@@ -148,11 +148,12 @@ export type Blog = {
   content: string;
   image: DumbImageAssetWrapper;
 };
-export async function getBlogs(): Promise<Blog[]>{
+export async function getBlogs(): Promise<Blog[]> {
   return await sanityClient.fetch(
     groq`*[_type == "blog"]{
       title,
       slug,
+      summary,
       content,
       image {
         alt,
@@ -162,17 +163,18 @@ export async function getBlogs(): Promise<Blog[]>{
   );
 }
 
-export async function getBlog(slug: string): Promise<Blog>{
+export async function getBlog(slug: string): Promise<Blog> {
   return await sanityClient.fetch(
-    groq`*[_type == "blog"][0]{
+    groq`*[_type == "blog"  && slug.current == "${slug}"][0]{
       title,
       slug,
+      summary,
       content,
       image {
         alt,
         asset->
       }
-    }`
+    }`,
   );
 }
 //

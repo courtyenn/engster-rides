@@ -1,21 +1,23 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import { getBlogs } from "../utils/sanity";
-import { default as BlogItem } from "../components/Blog.astro";
-const blogs = await getBlogs();
+import Layout from "../layouts/Layout.astro"
+import { getBlogs } from "../utils/sanity"
+import { default as BlogItem } from "../components/Blog.astro"
+const blogs = await getBlogs()
 ---
 
 <Layout
   title="Engsta Rides | Blog - Get latest news, updates, and tips."
   description="News for the best car-related gear, goods, and accessories. All in one place at Engsta Rides."
 >
-  <section class="">
-    <div class="bg-slate-400 py-10">
+  <main class="">
+    <div class="pb-28 pt-10">
       <h1 class="pageHeader2">Engsta Rides Blog</h1>
       <h2 class="pageSubHeader">Get the latest news, updates, and tips.</h2>
     </div>
-    <ul class="grid grid-cols-2 gap-4">
+    <ul
+      class="grid grid-cols-1 gap-4 gap-x-4 gap-y-8 pb-28 md:grid-cols-2 lg:grid-cols-3"
+    >
       {blogs.map((blog) => <BlogItem blog={blog} />)}
     </ul>
-  </section>
+  </main>
 </Layout>

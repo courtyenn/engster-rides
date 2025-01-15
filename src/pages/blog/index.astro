@@ -1,0 +1,51 @@
+---
+import Layout from "../../layouts/Layout.astro"
+import { getBlogs } from "../../utils/sanity"
+// import { getAvailableNeeds } from '../../controllers/needs'
+// import { ProductGallery } from '../../react_components'
+const blogs = await getBlogs()
+---
+
+<Layout
+  title="Blog"
+  description="Learn about the latest in car shows in Oklahoma, Texas and more."
+>
+  <main class="treatments__page roots">
+    <h1 class="treatments__page__title font-serif text-3xl">Blog</h1>
+    <div
+      class="flex items-center justify-end gap-4 self-start justify-self-stretch"
+    >
+      {blogs.length} result{blogs.length > 1 ? "s" : ""}
+      <!-- <select class="select select-bordered max-w-xs">
+        <option selected>Featured</option>
+        <option>A-Z</option>
+      </select> -->
+    </div>
+    <!-- <ProductGallery
+      blogs={blogs}
+      needsList={needsList}
+      client:load
+      transition:persis
+    /> -->
+  </main>
+  <style>
+    .treatments__page {
+      /* display: grid;
+      grid-template-columns: 12fr;
+      grid-template-rows: 12fr;
+      gap: 1rem; */
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      gap: 1rem;
+    }
+    @media screen and (min-width: 768px) {
+      .treatments__page {
+        display: grid;
+        grid-template-columns: minmax(200px, 3fr) 9fr;
+        grid-template-rows: 100px max-content;
+        gap: 1rem;
+      }
+    }
+  </style>
+</Layout>

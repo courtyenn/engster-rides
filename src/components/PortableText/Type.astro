@@ -1,0 +1,25 @@
+---
+import type { Props as $, TypedObject } from "astro-portabletext/types"
+import { usePortableText } from "astro-portabletext/utils"
+import Counter from "./Counter.astro"
+import Image from "./Image.astro"
+import Hr from "./Hr.astro"
+
+export type Props = $<TypedObject>
+
+const props = Astro.props
+const typeIs = (type: string) => type === props.node._type
+const { getDefaultComponent } = usePortableText(props.node)
+
+let Cmp = undefined
+
+if (typeIs("image")) {
+  Cmp = Image
+} else if (typeIs("break")) {
+  Cmp = Hr
+} else {
+  Cmp = getDefaultComponent()
+}
+---
+
+<Cmp {...props} />

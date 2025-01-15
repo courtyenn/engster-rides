@@ -1,0 +1,28 @@
+---
+import type { Props as $, TypedObject } from "astro-portabletext/types"
+
+export type Props = $<TypedObject>
+
+const props = Astro.props
+const { node, index, isInline, ...attrs } = props
+---
+
+{
+  isInline ? (
+    <span {...attrs} data-inline={String(isInline)}>
+      JSX Inline Counter
+      {` `}
+    </span>
+  ) : (
+    <div {...attrs} data-inline={String(isInline)}>
+      <h4 class="counter__title">JSX Block Counter</h4>
+    </div>
+  )
+}
+
+<style>
+  div,
+  span {
+    background: lightgreen;
+  }
+</style>

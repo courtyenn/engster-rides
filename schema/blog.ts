@@ -23,24 +23,32 @@ export default defineType({
     defineField({
       name: "content",
       title: "Content",
-      type: "markdown",
+      description: "Markdown content for the treatment page.",
+      type: "blockContent",
     }),
     defineField({
-      name: "test",
-      title: "Test Content",
-      type: "blockContent",
+      name: "summary",
+      title: "Summary",
+      type: "text",
     }),
     defineField({
       name: "image",
       title: "Banner image",
       type: "image",
       options: { hotspot: true },
+      fields: [
+        {
+          name: "alt",
+          type: "string",
+          validation: (Rule) => Rule.required(),
+        },
+      ],
     }),
   ],
   preview: {
     select: {
       title: "title",
-      content: "content[0].children[0].text",
+      content: "summary",
     },
     prepare(selection) {
       const { content } = selection;

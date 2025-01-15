@@ -1,56 +1,41 @@
 ---
-import type { Blog } from "../utils/sanity";
-import Intersecting from "./common/Intersecting.vue";
+import type { Blog } from "../utils/sanity"
+import Intersecting from "./common/Intersecting.vue"
+import { Picture } from "astro-imagetools/components"
 
 interface Props {
-  blog: Blog;
+  blog: Blog
 }
 
-const { slug, image: img, title } = Astro.props.blog;
-const image = img.asset;
+const { slug, image: img, title } = Astro.props.blog
+const image = img.asset
 ---
 
 <li>
   <Intersecting
     client:visible
-    className="flex w-full items-center justify-center gap-6"
+    className="flex w-full flex-col items-center justify-center"
     noSsr={false}
   >
-    <h1 class="">{title}</h1>
     <a
       href={`/blog/${slug.current}`}
-      class="scale-80 flex-card group relative z-10 flex max-w-md flex-1 flex-col items-center gap-4 text-center"
+      class="scale-80 flex-card group relative z-10 flex max-w-md flex-1 cursor-pointer flex-col items-center gap-y-2 text-center"
       rel="prefetch"
     >
+      <h2 class="text-xl">{title}</h2>
       <div class="w-80 shrink-0 grow-0 overflow-hidden">
         <div
-          class="transition-transform duration-500 group-hover:scale-100 group-hover:duration-[3s]"
+          class="cursor-pointer transition-transform duration-500 group-hover:scale-100 group-hover:duration-[3s]"
           transition:animate="slide"
           transition:name={`prod-${slug.current}`}
         >
-          <img
-            src={`${image.url}?w=320&dpr=2&sharp=50`}
-            alt="Shirts for sale"
+          <Picture
+            src={`${image.url}?w=300&h=300&dpr=2&sharp=50`}
+            alt={`${img.alt}`}
             class="scale-80"
           />
-          <!-- <Picture
-            attributes={{
-              picture: {
-                class: "scale-80",
-              },
-            }}
-            alt="Shirts for sale"
-            position="attention"
-            src={image.url}
-            layout="fullWidth"
-          /> -->
         </div>
       </div>
     </a>
-    <a
-      href={`/blog/${slug.current}`}
-      class="w-80 rounded-full bg-accent px-4 py-2 text-center text-lg font-bold text-white hover:opacity-80 lg:w-6/12"
-      rel="prefetch">VIEW SHIRT</a
-    >
   </Intersecting>
 </li>
